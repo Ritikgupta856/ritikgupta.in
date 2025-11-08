@@ -2,7 +2,6 @@
 import React from "react";
 import { projects } from "@/lib/data";
 import ProjectCard from "./ProjectCard";
-import { LucideWorkflow } from "lucide-react";
 import Heading from "./Heading";
 
 const Projects = () => {
@@ -20,7 +19,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-8">
+    <section id="projects">
       <Heading heading="Projects" />
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -30,7 +29,7 @@ const Projects = () => {
             title={project.title}
             description={project.description}
             href={project.href}
-            icon={project.icon}
+            image={project.image}
             tags={project.tags}
           />
         ))}

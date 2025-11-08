@@ -1,8 +1,10 @@
-import { Briefcase } from "lucide-react";
-import React from "react";
+"use client";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ChevronRight } from "lucide-react";
 import Heading from "./Heading";
 
-const Experience = () => {
 const experienceData = {
   company: "STARTWITH BASICX PVT. LTD.",
   role: "Associate Software Engineer",
@@ -15,56 +17,92 @@ const experienceData = {
   ],
   techStack:
     "React.js, TypeScript, Node.js, MSSQL, MariaDB, Shadcn UI, Tailwind CSS, AWS EC2/Amplify",
+  logo: "/icons/basicx.png",
+  link: "https://basicx.com",
 };
 
+export default function Experience() {
+  const [expanded, setExpanded] = useState(false);
+
   return (
-    <section id="experience" className="py-8">
-      <Heading heading="Experience" />
+    <section id="work-experience">
+      <Heading heading="Work Experience" />
 
-      {/* Experience Card */}
-      <div className="rounded-2xl shadow-lg border-gray-100 overflow-hidden p-6 bg-white dark:bg-zinc-900">
-        {/* Timeline and Company */}
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between">
-          <div className="flex-1">
-            <div className="flex items-center mb-3 space-x-2">
-              <Briefcase className="text-black dark:text-white w-6 h-6" />
-              <h2 className="text-2xl font-bold text-black dark:text-white">
-                {experienceData.company}
-              </h2>
+      <div className="flex min-h-0 flex-col gap-y-3">
+        <motion.div
+          initial={{ opacity: 0, y: 10, filter: "blur(2px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.4 }}
+        >
+          <div className="rounded-lg bg-card text-card-foreground flex p-3 transition hover:shadow-md group cursor-pointer">
+            {/* Logo */}
+            <div className="flex-none">
+              <span className="relative flex shrink-0 overflow-hidden rounded-full border size-12 m-auto bg-muted dark:bg-foreground">
+                <img
+                  alt={experienceData.company}
+                  src={experienceData.logo}
+                  className="aspect-square h-full w-full object-contain"
+                />
+              </span>
             </div>
 
-            <h3 className="text-lg font-semibold mb-2">
-              {experienceData.role}
-            </h3>
+            {/* Main content */}
+            <div className="flex-grow ml-4 flex flex-col justify-center">
+              <div className="flex items-center justify-between gap-x-2 text-base">
+                <div className="inline-flex items-center font-semibold leading-none text-xs sm:text-sm">
+                  {experienceData.company}
 
-            <p className="text-sm text-zinc-500 mb-4">
-              {experienceData.duration} | {experienceData.location}
-            </p>
-
-            {/* Achievements */}
-            <div className="space-y-3 lg:ml-8">
-              {experienceData.achievements.map((achievement, index) => (
-                <div key={index} className="flex items-start">
-                  <div className="w-2 h-2 rounded-full mt-2 mr-3 bg-violet-500 flex-shrink-0"></div>
-                  <p className="leading-relaxed">{achievement}</p>
+                  {/* Chevron appears on hover and toggles details */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setExpanded((prev) => !prev);
+                    }}
+                    aria-label="Toggle details"
+                    className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  >
+                    <motion.span
+                      animate={{ rotate: expanded ? 90 : 0 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    >
+                      <ChevronRight className="h-4 w-4 text-zinc-600" />
+                    </motion.span>
+                  </button>
                 </div>
-              ))}
-            </div>
 
-            {/* Tech Stack */}
-            <div className="mt-6">
-              <p className="text-sm font-medium text-black dark:text-white">
-                Tech Stack:{" "}
-                <span className="text-zinc-500 dark:text-white">
-                  {experienceData.techStack}
-                </span>
-              </p>
+                <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">
+                  {experienceData.duration}
+                </div>
+              </div>
+
+              <div className="font-sans text-xs">{experienceData.role}</div>
+              <div className="text-[10px] text-muted-foreground">
+                {experienceData.location}
+              </div>
+
+              {/* Expandable details */}
+              <motion.div
+                className="mt-3 text-xs sm:text-sm text-muted-foreground overflow-hidden"
+                initial={{ height: 0, opacity: 0 }}
+                animate={expanded ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
+                transition={{ height: { duration: 0.35 }, opacity: { duration: 0.2 } }}
+              >
+                <div className="pt-2">
+                  <ul className="list-disc list-inside text-sm space-y-1">
+                    {experienceData.achievements.map((point, i) => (
+                      <li key={i}>{point}</li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-3 text-[11px] text-zinc-500">
+                    <strong>Tech Stack:</strong> {experienceData.techStack}
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default Experience;
+}

@@ -1,24 +1,43 @@
 import Link from "next/link"
 import { Mail, Github, Linkedin, Youtube, Twitter } from "lucide-react"
-import { Button } from "@/components/ui/button"
 
 export default function Footer() {
   return (
-    <footer className="mx-auto max-w-4xl px-4">
+    <footer>
       <div className="mt-8 border-t">
-        <div className="container mx-auto flex max-w-4xl flex-col items-center justify-between gap-3 px-4 py-6 text-sm text-muted-foreground sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-3 px-4 py-6 text-sm text-muted-foreground sm:flex-row">
           <p>© {new Date().getFullYear()} Ritik Gupta. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <Link aria-label="Email" href="mailto:hello@example.com" className="hover:text-foreground">
-              Email
-            </Link>
-            <Link aria-label="GitHub" href="https://github.com/" className="hover:text-foreground">
-              GitHub
-            </Link>
-            <Link aria-label="LinkedIn" href="https://www.linkedin.com/" className="hover:text-foreground">
-              LinkedIn
-            </Link>
-          </div>
+              <div className="flex flex-row justify-center space-x-2 mt-2">
+                <a
+                  href="https://x.com/ritikgupta856"
+                  className="text-zinc-500 text-sm relative"
+                  target="__blank"
+                >
+                  <span className="relative z-10 px-2 py-2 inline-block hover:text-cyan-500">
+                    <Github className="h-5 w-5 hover:text-primary transition duration-150" />
+                  </span>
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/ritikgupta856/"
+                  className="text-zinc-500 text-sm relative"
+                  target="__blank"
+                >
+                  <span className="relative z-10 px-2 py-2 inline-block hover:text-cyan-500">
+                    <Linkedin className="h-5 w-5 hover:text-primary transition duration-150" />
+                  </span>
+                </a>
+
+                <a
+                  href="https://github.com/ritikgupta856"
+                  className="text-zinc-500 text-sm relative"
+                  target="__blank"
+                >
+                  <span className="relative z-10 px-2 py-2 inline-block hover:text-cyan-500">
+                    <Github className="h-5 w-5 hover:text-primary transition duration-150" />
+                  </span>
+                </a>
+              </div>
         </div>
       </div>
     </footer>

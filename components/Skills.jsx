@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
+import Heading from "./Heading";
 
 const skills = [
   { name: "React.js" },
@@ -10,20 +11,19 @@ const skills = [
   { name: "MongoDB" },
   { name: "PostgreSQL" },
   { name: "Prisma" },
-  { name: "Tailwind CSS" },
+  { name: "Tailwind" },
   { name: "Firebase" },
   { name: "Supabase" },
   { name: "Zustand" },
   { name: "C++" },
+  { name: "Rabbitmq" },
+  { name: "Docker" },
 ];
 
 export default function Skills() {
   return (
-    <section id="skills" className="scroll-mt-20 py-8 mb-10">
-      <div className="mb-8 text-center">
-        <h2 className="text-2xl font-bold tracking-tight">Skills</h2>
-        <p className="text-muted-foreground">Tools and technologies I use</p>
-      </div>
+    <section id="skills">
+      <Heading heading="Skills" />
 
       <motion.div
         initial="hidden"
@@ -33,7 +33,6 @@ export default function Skills() {
           hidden: {},
           show: { transition: { staggerChildren: 0.06 } },
         }}
-        className="mx-auto max-w-4xl"
       >
         <div className="flex flex-wrap gap-3">
           {skills.map((skill) => (

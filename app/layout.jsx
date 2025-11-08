@@ -11,7 +11,7 @@ export const metadata = {
   title: "Ritik Gupta | Full Stack Developer",
   description: "Personal portfolio website showcasing my skills and projects.",
    icons: {
-    icon: "/favicon.svg", 
+    icon: "/avatar.jpg", 
   },
 };
 
@@ -26,9 +26,7 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
           {children}
-          <Footer />
         </ThemeProvider>
       </body>
     </html>
