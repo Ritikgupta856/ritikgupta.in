@@ -34,7 +34,7 @@ export default function Skills() {
           show: { transition: { staggerChildren: 0.06 } },
         }}
       >
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap text-center gap-3">
           {skills.map((skill) => (
             <motion.div
               key={skill.name}

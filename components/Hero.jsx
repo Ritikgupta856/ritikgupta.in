@@ -9,9 +9,11 @@ const Hero = () => {
           <div className="flex-1">
             <h1 className="text-3xl sm:text-4xl xl:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
               Hi, I'm{" "}
-              <span className="text-violet-600 dark:text-violet-400">Ritik Gupta</span>
+              <span className="text-violet-600 dark:text-violet-400">
+                Ritik <span className="hidden sm:inline-block"> Gupta</span> 
+              </span>
             </h1>
-            <p className="text-zinc-600 dark:text-zinc-400 text-medium md:text-xl mt-3 font-medium">
+            <p className="text-zinc-600 dark:text-zinc-400 text-medium  md:text-xl mt-3 font-medium">
               Full-Stack Software Engineer
             </p>
           </div>
@@ -21,12 +23,10 @@ const Hero = () => {
               href="https://www.linkedin.com/in/ritikgupta856"
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-full overflow-hidden border-2 border-zinc-200 dark:border-zinc-700 hover:border-violet-500 dark:hover:border-violet-400 transition-all duration-300"
+              className="block rounded-full size-24 md:size-32 overflow-hidden border-2 border-zinc-200 dark:border-zinc-700 hover:border-violet-500 dark:hover:border-violet-400 transition-all duration-300"
             >
               <img
                 alt="Ritik Gupta"
-                width={140}
-                height={140}
                 className="object-cover bg-gray-100 dark:bg-zinc-800 rounded-full"
                 src="/avatar.jpg"
                 decoding="async"
@@ -35,9 +35,8 @@ const Hero = () => {
           </div>
         </div>
 
-
         <div className="mt-6">
-          <p className="text-zinc-600 dark:text-zinc-400 text-base leading-relaxed">
+          <p className="text-zinc-600 text-justify dark:text-zinc-400 text-sm md:text-base leading-relaxed">
             I'm a full-stack developer focused on building fast, reliable, and
             scalable web applications. I work with modern frameworks and tools
             to create clean, efficient, and user-friendly solutions. I enjoy
@@ -45,8 +44,6 @@ const Hero = () => {
             digital experiences that perform well and look great.
           </p>
         </div>
-
-  
       </section>
     </div>
   );

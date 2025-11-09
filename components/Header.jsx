@@ -4,24 +4,15 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import {
-  Moon,
-  Sun,
-  Home,
-  Layers,
-  Github,
-  Linkedin,
-  Twitter,
-} from "lucide-react";
-
-const XIcon = <svg viewBox="0 0 24 24" aria-hidden="true" class="h-4 w-4 mx-1"><g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g></svg>;
+import { Moon, Sun, Home, Github, Linkedin, FileText } from "lucide-react";
+import { IconBrandX } from "@tabler/icons-react";
 
 const links = [
   { path: "/", name: "Home", icon: Home },
   {
     path: "https://drive.google.com/file/d/1kLPc9eAyXBNFc2LZ9w8WHWAMusx8DLkb/view?usp=drive_link",
     name: "Resume",
-    icon: Layers,
+    icon: FileText,
   },
   { path: "https://github.com/Ritikgupta856", name: "GitHub", icon: Github },
   {
@@ -29,7 +20,7 @@ const links = [
     name: "LinkedIn",
     icon: Linkedin,
   },
-  { path: "https://x.com/ritikgupta856", name: "X", icon: Twitter },
+  { path: "https://x.com/ritikgupta856", name: "X", icon: IconBrandX },
 ];
 
 const Header = () => {
@@ -50,28 +41,33 @@ const Header = () => {
         {links.map(({ path, icon: Icon, name }, index) => {
           const isActive = pathname === path;
           return (
-            <Link
-              key={index}
-              href={path}
-              target={path.startsWith("http") ? "_blank" : "_self"}
-              rel="noopener noreferrer"
-              aria-label={name}
-              className="relative p-2 rounded-full text-zinc-700 dark:text-zinc-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
-            >
-              <Icon className="h-5 w-5" />
-              {isActive && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute inset-0 bg-violet-100 dark:bg-violet-900/30 rounded-full -z-10"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
+            <div key={index} className="flex items-center">
+              <Link
+                href={path}
+                target={path.startsWith("http") ? "_blank" : "_self"}
+                rel="noopener noreferrer"
+                aria-label={name}
+                className="relative p-2 rounded-full text-zinc-700 dark:text-zinc-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
+              >
+                <Icon className="h-5 w-5" />
+                {isActive && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-violet-100 dark:bg-violet-900/30 rounded-full -z-10"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </Link>
+              
+              {name === "Resume" && (
+                <div className="w-px h-6 bg-zinc-300 dark:bg-zinc-600 mx-1" />
               )}
-            </Link>
+            </div>
           );
         })}
 
-        <div className="w-px h-6 bg-zinc-300 dark:bg-zinc-600 mx-1" />
 
+        <div className="w-px h-6 bg-zinc-300 dark:bg-zinc-600 mx-1" />
         <button
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           className="p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors"
