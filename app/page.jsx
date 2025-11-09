@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main>
-      <div className="max-w-3xl mx-auto flex flex-col gap-16 px-4 md:px-0">
+      <div className="max-w-4xl mx-auto flex flex-col gap-12 md:gap-16 px-8 md:px-4">
         <Header />
         <Hero />
         <Experience />

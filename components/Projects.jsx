@@ -19,18 +19,18 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects">
+    <section id="projects" className="py-10">
       <Heading heading="Projects" />
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
         {projects.map((project, index) => (
           <ProjectCard
             key={index}
             title={project.title}
-            description={project.description}
             href={project.href}
-            image={project.image}
+            githubLink={project.githubLink}
             tags={project.tags}
+            highlights={project.highlights}
           />
         ))}
       </div>

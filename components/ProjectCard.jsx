@@ -1,66 +1,83 @@
+"use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Link2 } from "lucide-react";
 
-export default function ProjectCard({ title, description, href, image, tags }) {
+export default function ProjectCard({
+  title,
+  href,
+  githubLink,
+  tags,
+  highlights,
+}) {
   return (
-    <Link
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block mb-4 w-full"
-      aria-label={title}
-    >
-      <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/10 hover:border-violet-500/50 dark:hover:border-violet-400/50 relative group">
-        <span className="absolute w-[40%] -bottom-px right-px h-px bg-gradient-to-r from-violet-500/0 via-violet-500/60 to-violet-500/0 dark:from-violet-400/0 dark:via-violet-400/60 dark:to-violet-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-        <span className="absolute w-px -left-px top-[50%] h-[40%] bg-gradient-to-b from-violet-500/0 via-violet-500/60 to-violet-500/0 dark:from-violet-400/0 dark:via-violet-400/60 dark:to-violet-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+    <Card className="group w-full h-full transition-all duration-300 hover:border-violet-500/30 dark:hover:border-violet-400/30 bg-zinc-50/50 dark:bg-zinc-900/50">
+      <CardHeader className="pb-4">
+        <CardTitle className="text-xl font-bold text-foreground mb-1">
+          {title}
+        </CardTitle>
+      </CardHeader>
 
-        {image && (
-          <div className="relative w-full h-48 overflow-hidden bg-gradient-to-br from-violet-50 to-blue-50 dark:from-violet-950/20 dark:to-blue-950/20">
-            <Image
-              src={image}
-              alt={`${title} image`}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-            />
+      <CardContent className="space-y-6">
+        {highlights.length > 0 && (
+          <ul className="space-y-3">
+            {highlights.map((point, i) => (
+              <li
+                key={i}
+                className="flex gap-3 text-sm text-muted-foreground leading-relaxed"
+              >
+                <span className="text-violet-500 dark:text-violet-400 mt-1 flex-shrink-0">
+                  •
+                </span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {tags && tags.length > 0 && (
+          <div>
+            <p className="text-xs font-semibold text-foreground mb-3 uppercase tracking-wider">
+              Tech Stack
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {tags.map((tag, idx) => (
+                <Badge
+                  key={idx}
+                  variant="secondary"
+                  className="text-xs font-normal bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700"
+                >
+                  {tag}
+                </Badge>
+              ))}
+            </div>
           </div>
         )}
 
-        <CardHeader>
-          <CardTitle className="text-xl">
-            {title}
-          </CardTitle>
-          {!image && (
-            <CardDescription className="text-sm">
-              {description}
-            </CardDescription>
-          )}
-        </CardHeader>
+        <div className="flex items-center gap-4 pt-2 border-t border-zinc-200 dark:border-zinc-800">
+          <Link
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm text-violet-600 dark:text-violet-400 hover:underline font-medium"
+          >
+            <Link2 className="h-4 w-4" />
+            Live
+          </Link>
 
-        {image && (
-          <CardContent className="space-y-4">
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {description}
-            </p>
-            
-            {tags && tags.length > 0 && (
-              <div className="flex flex-wrap gap-2">
-                {tags.map((tag, idx) => (
-                  <Badge 
-                    key={idx} 
-                    variant="secondary"
-                    className="text-xs font-normal bg-violet-100 text-violet-700 dark:bg-violet-950/50 dark:text-white hover:bg-violet-200 dark:hover:bg-violet-950/70"
-                  >
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-            )}
-          </CardContent>
-        )}
-      </Card>
-    </Link>
+          <Link
+            href={githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm text-violet-600 dark:text-violet-400 hover:underline font-medium"
+          >
+            <Link2 className="h-4 w-4" />
+            Github
+          </Link>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
