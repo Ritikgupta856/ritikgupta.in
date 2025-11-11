@@ -2,7 +2,7 @@ import React from "react";
 
 const Heading = ({ heading }) => {
   return (
-    <div className="mb-4">
+    <div className="mb-6">
       <h2 className="text-xl font-bold text-gray-900 dark:text-white">
         {heading}
       </h2>

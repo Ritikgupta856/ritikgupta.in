@@ -15,7 +15,7 @@ export default function ProjectCard({
   return (
     <Card className="group w-full h-full transition-all duration-300 hover:border-violet-500/30 dark:hover:border-violet-400/30 bg-zinc-50/50 dark:bg-zinc-900/50">
       <CardHeader className="pb-4">
-        <CardTitle className="text-lg md:text-medium font-bold text-foreground mb-1">
+        <CardTitle className="text-md md-text-lg font-bold text-foreground mb-1">
           {title}
         </CardTitle>
       </CardHeader>
