@@ -19,7 +19,7 @@ export default function Experience() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <div className="rounded-lg py-4 transition-all hover:border-violet-500/30 dark:hover:border-violet-400/30 group">
+          <div className="rounded-lg transition-all hover:border-violet-500/30 dark:hover:border-violet-400/30 group">
             <div className="flex gap-4">
               <div className="flex-none">
                 <div className="relative flex shrink-0 overflow-hidden rounded-full border border-zinc-200 dark:border-zinc-700 size-12 bg-white dark:bg-zinc-800">
