@@ -65,7 +65,7 @@ const Chatbot = () => {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-violet-600 text-white p-4 rounded-full shadow-lg hover:bg-violet-700 transition-all z-50 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2"
+        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 bg-violet-600 text-white p-4 rounded-full shadow-lg hover:bg-violet-700 transition-all z-50 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2"
         aria-label={isOpen ? "Close chatbot" : "Open chatbot"}
       >
         {isOpen ? <X /> : <MessageCircle />}
@@ -76,7 +76,7 @@ const Chatbot = () => {
           variants={fadeInVariants}
           initial="hidden"
           animate="visible"
-          className="fixed bottom-20 right-6 md:bottom-24 md:right-10 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-2xl w-80 md:w-96 z-40"
+          className="fixed bottom-20 right-6 md:bottom-24 md:right-10 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-2xl w-80 md:w-96 z-40"
         >
           <div className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
             Get in Touch

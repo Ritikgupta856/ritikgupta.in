@@ -3,7 +3,7 @@ import { Github, Linkedin } from "lucide-react";
 
 const Hero = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full py-4">
+    <div className="flex flex-col items-center justify-center w-full h-full py-4 mt-2 md:mt-4">
       <section id="hero" className="w-full max-w-4xl">
         <div className="flex items-center justify-between gap-8 w-full">
           <div className="flex-1">
@@ -36,7 +36,7 @@ const Hero = () => {
         </div>
 
         <div className="mt-6">
-          <p className="text-zinc-600 text-justify dark:text-zinc-400 text-sm md:text-base leading-relaxed">
+          <p className="text-zinc-600 text-justify dark:text-zinc-400 text-sm leading-relaxed">
             I'm a full-stack developer focused on building fast, reliable, and
             scalable web applications. I work with modern frameworks and tools
             to create clean, efficient, and user-friendly solutions. I enjoy

@@ -19,7 +19,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-10">
+    <section id="projects" className="pb-10">
       <Heading heading="Projects" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">

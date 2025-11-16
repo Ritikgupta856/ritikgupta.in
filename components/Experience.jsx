@@ -22,9 +22,9 @@ export default function Experience() {
           <div className="rounded-lg transition-all hover:border-violet-500/30 dark:hover:border-violet-400/30 group">
             <div className="flex gap-4">
               <div className="flex-none">
-                <div className="relative flex shrink-0 overflow-hidden rounded-full border border-zinc-200 dark:border-zinc-700 size-12 bg-white dark:bg-zinc-800">
+                <div className="relative flex shrink-0 overflow-hidden rounded-full border border-zinc-200 dark:border-zinc-700 w-12 h-12 bg-white dark:bg-zinc-800">
                   <img
-                    alt={experienceData.company}
+                    alt={experienceData.company ?? "company logo"}
                     src={experienceData.logo}
                     className="aspect-square h-full w-full object-cover"
                   />
@@ -33,40 +33,46 @@ export default function Experience() {
 
               <div className="flex-grow">
                 <div className="flex items-start justify-between gap-4 mb-1">
-                  <div className="flex items-center gap-2">
-                    <h3 className="font-bold text-sm text-foreground">
-                      {experienceData.company}
-                    </h3>
+                  <div className="flex flex-col">
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-bold text-sm text-foreground">
+                        {experienceData.company}
+                      </h3>
 
-                    <button
-                      onClick={() => setExpanded((prev) => !prev)}
-                      aria-label="Toggle details"
-                      className="opacity-0 group-hover:opacity-100 transition-opacity"
-                    >
-                      <motion.div
-                        animate={{ rotate: expanded ? 90 : 0 }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 300,
-                          damping: 20,
-                        }}
+                      <button
+                        onClick={() => setExpanded((prev) => !prev)}
+                        aria-label="Toggle details"
+                        className="opacity-0 group-hover:opacity-100 transition-opacity"
                       >
-                        <ChevronRight className="h-4 w-4 text-zinc-500" />
-                      </motion.div>
-                    </button>
+                        <motion.div
+                          animate={{ rotate: expanded ? 90 : 0 }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 300,
+                            damping: 20,
+                          }}
+                        >
+                          <ChevronRight className="h-4 w-4 text-zinc-500" />
+                        </motion.div>
+                      </button>
+                    </div>
+
+                    <div className="text-xs font-medium text-foreground mt-0.5">
+                      {experienceData.role}
+                    </div>
                   </div>
 
-                  <div className="text-xs text-muted-foreground shrink-0">
-                    {experienceData.duration}
+  
+                  <div className="flex flex-col items-end">
+                    <div className="text-xs text-muted-foreground shrink-0">
+                      {experienceData.duration}
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      {experienceData.location}
+                    </div>
                   </div>
                 </div>
 
-                <div className="text-xs font-medium text-foreground mb-0.5">
-                  {experienceData.role}
-                </div>
-                <div className="text-xs text-muted-foreground mb-3">
-                  {experienceData.location}
-                </div>
                 <motion.div
                   className="overflow-hidden"
                   initial={{ height: 0, opacity: 0 }}
@@ -85,7 +91,7 @@ export default function Experience() {
                       {experienceData.workDone.map((point, i) => (
                         <li
                           key={i}
-                          className="flex gap-3 text-sm text-muted-foreground leading-relaxed"
+                          className="flex gap-3 text-xs text-muted-foreground leading-relaxed"
                         >
                           <span className="text-violet-500 dark:text-violet-400 mt-1 flex-shrink-0">
                             •

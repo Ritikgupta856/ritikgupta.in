@@ -16,7 +16,7 @@ export default function Education() {
       </motion.div>
 
       <div className="relative space-y-6 md:space-y-8">
-        <div className="flex min-h-0 flex-col gap-y-3">
+        <div className="flex min-h-0 flex-col gap-y-6">
           {education.map((item, index) => (
             <motion.div
               key={index}

@@ -35,7 +35,7 @@ const Header = () => {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.1 }}
-      className="flex justify-center sticky top-4 z-50 w-full"
+      className="flex justify-center sticky top-8 z-50 w-full"
     >
       <nav className="flex items-center justify-center gap-2 rounded-full bg-white/80 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-md dark:bg-zinc-800/90 dark:ring-white/10 transition-all">
         {links.map(({ path, icon: Icon, name }, index) => {
