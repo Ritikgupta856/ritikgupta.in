@@ -14,7 +14,7 @@ export default function Experience() {
       <Heading heading="Work Experience" />
 
       <div className="flex min-h-0 flex-col gap-y-3">
-        <motion.div
+        <div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
@@ -114,7 +114,7 @@ export default function Experience() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

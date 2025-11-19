@@ -72,7 +72,7 @@ const Chatbot = () => {
       </button>
       
       {isOpen && (
-        <motion.div
+        <div
           variants={fadeInVariants}
           initial="hidden"
           animate="visible"
@@ -142,7 +142,7 @@ const Chatbot = () => {
               {isLoading ? "Sending..." : "Submit"}
             </Button>
           </form>
-        </motion.div>
+        </div>
       )}
     </>
   );

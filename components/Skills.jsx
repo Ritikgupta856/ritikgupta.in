@@ -25,7 +25,7 @@ export default function Skills() {
     <section id="skills">
       <Heading heading="Skills" />
 
-      <motion.div
+      <div
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
@@ -36,14 +36,14 @@ export default function Skills() {
       >
         <div className="flex flex-wrap text-center gap-3">
           {skills.map((skill) => (
-            <motion.div
+            <div
               key={skill.name}
               variants={{
                 hidden: { opacity: 0, y: 15, scale: 0.9 },
                 show: { opacity: 1, y: 0, scale: 1 },
               }}
             >
-              <motion.div
+              <div
                 whileHover={{ y: -2, scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 className="inline-block"
@@ -54,11 +54,11 @@ export default function Skills() {
                 >
                   {skill.name}
                 </Badge>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

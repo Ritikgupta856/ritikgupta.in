@@ -7,18 +7,18 @@ import { education } from "@/lib/data";
 export default function Education() {
   return (
     <section id="education">
-      <motion.div
+      <div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
         <Heading heading="Education" />
-      </motion.div>
+      </div>
 
       <div className="relative space-y-6 md:space-y-8">
         <div className="flex min-h-0 flex-col gap-y-6">
           {education.map((item, index) => (
-            <motion.div
+            <div
               key={index}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ export default function Education() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

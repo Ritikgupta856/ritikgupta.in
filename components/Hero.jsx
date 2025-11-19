@@ -1,6 +1,3 @@
-"use client";
-import { Github, Linkedin } from "lucide-react";
-
 const Hero = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full h-full py-4 mt-2 md:mt-4">
