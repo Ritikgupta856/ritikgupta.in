@@ -1,8 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images : {
-        domains : ['www.flaticon.com'] // <== Domain name
-      }
-}
+  images: {
+    domains: ["www.flaticon.com"],
+  },
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+};
 
-module.exports = nextConfig
+const withMDX = require("@next/mdx")({
+  extensions: /\.(md|mdx)$/,
+});
+
+module.exports = withMDX(nextConfig);
