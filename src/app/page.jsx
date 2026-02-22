@@ -4,7 +4,7 @@ import Chatbot from "@/components/ChatBot";
 import Experience from "@/components/Experience";
 import Stack from "@/components/Stack";
 import BlogCard from "@/components/BlogCards";
-import Heading from "@/components/Heading"; // Added this import
+import Heading from "@/components/Heading";
 import { blogs } from "@/lib/data";
 
 export default function Home() {
@@ -18,7 +18,6 @@ export default function Home() {
           <Projects />
 
           <section id="blogs" className="w-full font-sans scroll-mt-24">
-            {/* Replaced manual heading/subtitle logic with Heading component */}
             <Heading
               title="Latest Blogs"
               subtitle="Sharing my thoughts, tutorials and insights on software development."
