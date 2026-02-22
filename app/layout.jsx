@@ -19,7 +19,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-zinc-50 dark:bg-[#09090b] text-zinc-950 dark:text-zinc-50 antialiased`}>
         <GAInit />
         <Toaster />
         <ThemeProvider
@@ -28,9 +28,11 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          <div className="max-w-3xl mx-auto border border-zinc-200 dark:border-zinc-800 shadow-sm">
+          <div className="relative flex min-h-screen flex-col">
             <Header />
-            {children}
+            <div className="flex-1">
+              {children}
+            </div>
             <Footer />
           </div>
         </ThemeProvider>

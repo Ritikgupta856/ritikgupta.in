@@ -65,24 +65,24 @@ const Chatbot = () => {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 bg-violet-600 text-white p-4 rounded-full shadow-lg hover:bg-violet-700 transition-all z-50 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2"
+        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-full shadow-lg hover:shadow-blue-500/25 hover:-translate-y-1 transition-all z-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         aria-label={isOpen ? "Close chatbot" : "Open chatbot"}
       >
         {isOpen ? <X /> : <MessageCircle />}
       </button>
-      
+
       {isOpen && (
         <div
           variants={fadeInVariants}
           initial="hidden"
           animate="visible"
-          className="fixed bottom-20 right-6 md:bottom-24 md:right-10 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-2xl w-80 md:w-96 z-40"
+          className="fixed bottom-20 right-6 md:bottom-24 md:right-10 bg-card border border-border p-6 rounded-2xl shadow-2xl w-80 md:w-96 z-40"
         >
-          <div className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
+          <div className="text-xl font-bold mb-1 text-foreground">
             Get in Touch
           </div>
-          <div className="text-sm font-medium mb-6 text-gray-600 dark:text-gray-300">
-            I'd love to hear from you!
+          <div className="text-sm font-medium mb-6 text-muted-foreground">
+            I&apos;d love to hear from you!
           </div>
 
           <form
@@ -91,14 +91,14 @@ const Chatbot = () => {
             className="flex flex-col gap-4"
           >
             <div>
-              <Label htmlFor="name" className="text-gray-900 dark:text-white">
+              <Label htmlFor="name" className="text-foreground">
                 Full Name
               </Label>
               <Input
                 type="text"
                 id="name"
                 name="username"
-                className="mt-2 bg-gray-50 dark:bg-gray-700"
+                className="mt-2 bg-background border-border focus:border-primary placeholder:text-muted-foreground"
                 placeholder="Your Name"
                 required
                 aria-required="true"
@@ -106,14 +106,14 @@ const Chatbot = () => {
             </div>
 
             <div>
-              <Label htmlFor="email" className="text-gray-900 dark:text-white">
+              <Label htmlFor="email" className="text-foreground">
                 Email
               </Label>
               <Input
                 type="email"
                 id="email"
                 name="email"
-                className="mt-2 bg-gray-50 dark:bg-gray-700"
+                className="mt-2 bg-background border-border focus:border-primary placeholder:text-muted-foreground"
                 placeholder="Your Email ID"
                 required
                 aria-required="true"
@@ -121,14 +121,15 @@ const Chatbot = () => {
             </div>
 
             <div>
-              <Label htmlFor="msg" className="text-gray-900 dark:text-white">
+              <Label htmlFor="msg" className="text-foreground">
                 Message
               </Label>
               <Textarea
                 placeholder="Type your message here"
                 name="message"
                 id="msg"
-                className="mt-2 bg-gray-50 dark:bg-gray-700"
+                className="mt-2 bg-background border-border focus:border-primary placeholder:text-muted-foreground resize-none"
+                rows={4}
                 required
                 aria-required="true"
               />
@@ -136,10 +137,10 @@ const Chatbot = () => {
 
             <Button
               type="submit"
-              className="mt-5 bg-violet-600 hover:bg-violet-700 dark:bg-violet-700 dark:hover:bg-violet-600 transition-colors dark:text-white duration-300"
+              className="mt-4 w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:opacity-90 transition-opacity text-white font-semibold py-2.5 rounded-lg shadow-md border-none"
               disabled={isLoading}
             >
-              {isLoading ? "Sending..." : "Submit"}
+              {isLoading ? "Sending..." : "Send Message"}
             </Button>
           </form>
         </div>

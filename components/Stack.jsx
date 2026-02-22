@@ -1,81 +1,75 @@
 "use client";
-import { m, motion } from "framer-motion";
+import { motion } from "framer-motion";
+import { stack } from "@/lib/data";
 import Image from "next/image";
 import Heading from "./Heading";
 
-const skills = [
-  { name: "TypeScript", icon: "/stack/ts.png" },
-  { name: "JavaScript", icon: "/stack/js.png" },
-  { name: "React.js", icon: "/stack/react.png" },
-  { name: "Next.js", icon: "/stack/next.png" },
-  { name: "Node.js", icon: "/stack/node.png" },
-  { name: "MongoDB", icon: "/stack/mongodb.png" },
-  { name: "PostgreSQL", icon: "/stack/postgres.png" },
-  { name: "Docker", icon: "/stack/docker.png" },
-  { name: "Tailwind", icon: "/stack/tailwind.png" },
-  { name: "Firebase", icon: "/stack/firebase.png" },
-  { name: "Prisma", icon: "/stack/prisma.png" },
-  { name: "Git", icon: "/stack/git.png" },
-  {name:"MySQL", icon:"/stack/mysql.png"},
-  {name:"RabbitMQ", icon:"/stack/rabbitmq.png"},
-  {name:"shadcn/ui", icon:"/stack/shadcn.png"},
-
-];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
+const tagVariants = {
+  hidden: { opacity: 0, scale: 0.9, y: 10 },
+  visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.05 },
+    scale: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 300, damping: 20 }
   },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  show: { opacity: 1, scale: 1 },
+  hover: {
+    scale: 1.05,
+    y: -2,
+    transition: { type: "spring", stiffness: 400, damping: 10 }
+  }
 };
 
 export default function Stack() {
   return (
-    <section id="stack" className="w-full border-x border-zinc-200 dark:border-zinc-800 font-mono">
-   
+    <section id="stack" className="w-full font-sans scroll-mt-24">
+      <Heading
+        title="Technology Stack"
+        subtitle="The tools and technologies I use to bring ideas to life."
+      />
 
-    <Heading heading="Stack" />
+      <div className="bg-card rounded-3xl p-6 md:p-10 border border-border shadow-sm">
+        <motion.div
+          className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-5"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ staggerChildren: 0.05 }}
+        >
+          {stack.map((skill, index) => {
+            const Icon = skill.icon;
+            return (
+              <motion.div
+                key={index}
+                variants={tagVariants}
+                whileHover="hover"
+                className="group relative flex items-center justify-center size-14 md:size-16 bg-muted hover:bg-background rounded-2xl border border-border hover:border-foreground/20 hover:shadow-md transition-all cursor-pointer"
+              >
+                {/* Icon */}
+                {Icon ? (
+                  typeof Icon === "string" ? (
+                    <div className="relative size-7 md:size-8 transition-transform duration-300 group-hover:scale-110">
+                      <Image src={Icon} alt={skill.name} fill className="object-contain" />
+                    </div>
+                  ) : (
+                    <Icon className="size-7 md:size-8 text-foreground transition-transform duration-300 group-hover:scale-110 group-hover:text-primary" />
+                  )
+                ) : (
+                  <div className="size-5 rounded-full bg-foreground/20 transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary/50" />
+                )}
 
-      {/* Icon Grid Area */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="p-8 bg-white dark:bg-zinc-950"
-      >
-        <div className="flex flex-wrap gap-x-8 gap-y-10 items-center justify-start">
-          {skills.map((skill) => (
-            <motion.div
-              key={skill.name}
-              variants={itemVariants}
-              whileHover={{ scale: 1.15 }}
-              className="relative group cursor-pointer"
-            >
-              <div className="size-10 md:size-12 flex items-center justify-center">
-                <Image
-                  src={skill.icon}
-                  alt={skill.name}
-                  width={44}
-                  height={44}
-                  className="object-contain transition-all duration-300"
-                />
-              </div>
-              
-              {/* Tooltip on hover */}
-              <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 text-[10px] bg-zinc-900 text-white px-2 py-0.5 rounded transition-opacity pointer-events-none whitespace-nowrap">
-                {skill.name}
-              </span>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+                {/* Hover Tooltip */}
+                <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-foreground text-background text-xs font-semibold rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10 shadow-xl">
+                  {skill.name}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-foreground" />
+                </div>
+
+                {/* Subtle gradient glow effect on absolute hover */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 to-cyan-500/0 group-hover:from-blue-500/10 group-hover:to-cyan-500/10 pointer-events-none transition-colors" />
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
     </section>
   );
 }

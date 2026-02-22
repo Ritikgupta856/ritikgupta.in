@@ -4,6 +4,7 @@
 
 html {
   --line-color: black;
+  scroll-behavior: smooth;
 }
 
 html.dark {
@@ -12,54 +13,68 @@ html.dark {
  
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Zinc-based Light Theme */
+    --background: 240 4.8% 98%; /* zinc-50 */
+    --foreground: 240 5.9% 10%; /* zinc-950 */
+    --card: 0 0% 100%; /* white */
+    --card-foreground: 240 5.9% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
+    --popover-foreground: 240 5.9% 10%;
     
-    /* Add this line */
-    --edge: 214.3 31.8% 95%;  /* Lighter version of border */
+    --primary: 221.2 83.2% 53.3%; /* blue-600 */
+    --primary-foreground: 210 40% 98%; /* zinc-50 */
+    
+    --secondary: 240 4.8% 95.9%; /* zinc-100 */
+    --secondary-foreground: 240 5.9% 10%; /* zinc-950 */
+    
+    --muted: 240 4.8% 95.9%; /* zinc-100 */
+    --muted-foreground: 240 3.8% 46.1%; /* zinc-500 */
+    
+    --accent: 240 4.8% 95.9%; /* zinc-100 */
+    --accent-foreground: 240 5.9% 10%; /* zinc-950 */
+    
+    --destructive: 0 84.2% 60.2%; /* red-500 */
+    --destructive-foreground: 210 40% 98%; /* zinc-50 */
+    
+    --border: 240 5.9% 90%; /* zinc-200 */
+    --input: 240 5.9% 90%; /* zinc-200 */
+    --ring: 240 5.9% 10%; /* zinc-950 */
+    --radius: 0.75rem; 
+    
+    --edge: 240 5.9% 95%; /* lighter border */
   }
  
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    /* Zinc-based Dark Theme */
+    --background: 240 10% 3.9%; /* zinc-950 / #09090b */
+    --foreground: 0 0% 98%; /* zinc-50 */
     
-    /* Add this line */
-    --edge: 217.2 32.6% 20%;  /* Lighter version of border for dark mode */
+    --card: 240 5% 10%; /* between zinc-900 & 950 */
+    --card-foreground: 0 0% 98%; /* zinc-50 */
+    
+    --popover: 240 10% 4.9%; /* zinc-950 */
+    --popover-foreground: 0 0% 98%; /* zinc-50 */
+    
+    --primary: 217.2 91.2% 59.8%; /* blue-500 */
+    --primary-foreground: 210 40% 98%; /* zinc-50 */
+    
+    --secondary: 240 3.7% 15.9%; /* zinc-800 */
+    --secondary-foreground: 0 0% 98%; /* zinc-50 */
+    
+    --muted: 240 3.7% 15.9%; /* zinc-800 */
+    --muted-foreground: 240 5% 64.9%; /* zinc-400 */
+    
+    --accent: 240 3.7% 15.9%; /* zinc-800 */
+    --accent-foreground: 0 0% 98%; /* zinc-50 */
+    
+    --destructive: 0 62.8% 30.6%; /* red-800 */
+    --destructive-foreground: 0 0% 98%; /* zinc-50 */
+    
+    --border: 240 3.7% 15.9%; /* zinc-800 */
+    --input: 240 3.7% 15.9%; /* zinc-800 */
+    --ring: 240 4.9% 83.9%; /* zinc-300 */
+    
+    --edge: 240 4% 12%; /* dark edge */
   }
 }
 
@@ -74,6 +89,145 @@ html.dark {
   body {
     @apply bg-background text-foreground;
   }
+}/* ─── Custom Prose Styles for MDX Blog Content ─── */
+.prose {
+  color: hsl(var(--foreground));
+  font-size: 1rem;
+  line-height: 1.75;
 }
 
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: hsl(var(--foreground));
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+  letter-spacing: -0.02em;
+}
+.prose h1 { font-size: 2em; margin-top: 0; }
+.prose h2 { font-size: 1.5em; }
+.prose h3 { font-size: 1.25em; }
+.prose h4 { font-size: 1.1em; }
 
+.prose p {
+  margin-top: 0;
+  margin-bottom: 1.25em;
+  color: hsl(var(--muted-foreground));
+}
+
+.prose strong {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+}
+
+.prose em {
+  font-style: italic;
+  color: hsl(var(--foreground));
+}
+
+.prose a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: opacity 0.15s;
+}
+.prose a:hover { opacity: 0.75; }
+
+.prose ul,
+.prose ol {
+  padding-left: 1.5em;
+  margin-bottom: 1.25em;
+  color: hsl(var(--muted-foreground));
+}
+.prose li { margin-bottom: 0.4em; }
+.prose ul > li { list-style-type: disc; }
+.prose ol > li { list-style-type: decimal; }
+.prose ul > li::marker,
+.prose ol > li::marker { color: hsl(var(--primary)); }
+
+.prose blockquote {
+  border-left: 3px solid hsl(var(--primary));
+  margin: 1.5em 0;
+  padding: 0.75em 1.25em;
+  background: hsl(var(--muted));
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
+}
+.prose blockquote p { margin-bottom: 0; }
+
+/* Inline code */
+.prose :not(pre) > code {
+  background: hsl(var(--muted));
+  color: hsl(var(--primary));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.3em;
+  padding: 0.15em 0.4em;
+  font-size: 0.875em;
+  font-family: ui-monospace, 'Fira Code', monospace;
+}
+
+/* Code blocks */
+.prose pre {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.75rem;
+  padding: 1.25em 1.5em;
+  overflow-x: auto;
+  margin: 1.5em 0;
+  font-size: 0.875em;
+  line-height: 1.7;
+}
+.prose pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: hsl(var(--foreground));
+  font-size: inherit;
+  font-family: ui-monospace, 'Fira Code', monospace;
+}
+
+/* Tables */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.9em;
+}
+.prose thead tr {
+  border-bottom: 2px solid hsl(var(--border));
+}
+.prose th {
+  text-align: left;
+  padding: 0.6em 1em;
+  color: hsl(var(--foreground));
+  font-weight: 600;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.prose td {
+  padding: 0.6em 1em;
+  border-bottom: 1px solid hsl(var(--border));
+  color: hsl(var(--muted-foreground));
+}
+.prose tbody tr:hover { background: hsl(var(--muted)); }
+
+/* Horizontal Rule */
+.prose hr {
+  border: none;
+  border-top: 1px solid hsl(var(--border));
+  margin: 2em 0;
+}
+
+/* Images */
+.prose img {
+  border-radius: 0.75rem;
+  margin: 1.5em auto;
+  max-width: 100%;
+  border: 1px solid hsl(var(--border));
+}

@@ -1,20 +1,18 @@
 "use client";
 import React from "react";
 
-const Heading = ({ heading }) => {
+const Heading = ({ title, subtitle, className = "" }) => {
   return (
-    <div className="relative w-full border-y border-zinc-200 dark:border-zinc-800 py-3 px-6 font-mono">
-
-      <div className="absolute inset-0 
-        before:absolute before:inset-y-[-1px] before:-left-[100vw] before:w-[200vw] before:-z-10 
-  
-        before:border-y before:border-zinc-200 before:dark:border-zinc-800">
-      </div>
-
-      <h2 className="relative z-10 text-2xl font-bold tracking-tighter text-zinc-900 dark:text-zinc-50 flex items-center gap-2">
-
-        {heading}
+    <div className={`mb-8 sm:mb-10 text-left ${className}`}>
+      <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight flex items-center gap-3 justify-start">
+        <span className="shrink-0 w-8 sm:w-12 h-1 bg-gradient-to-r from-blue-500 to-transparent rounded-full hidden sm:block" />
+        {title}
       </h2>
+      {subtitle && (
+        <p className="text-muted-foreground mt-2 text-xs sm:text-sm md:text-base max-w-2xl">
+          {subtitle}
+        </p>
+      )}
     </div>
   );
 };

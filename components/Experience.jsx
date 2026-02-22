@@ -1,108 +1,78 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronRight, MapPin, Calendar } from "lucide-react";
-import Heading from "./Heading";
+import { CheckCircle2, Calendar, MapPin } from "lucide-react";
 import { experienceData } from "@/lib/data";
+import Heading from "./Heading";
 
 export default function Experience() {
-  const [expanded, setExpanded] = useState(true);
-
   return (
-    <section id="experience" className="w-full border-x border-zinc-200 dark:border-zinc-800 font-mono">
-      <Heading heading="Experience" />
+    <section id="experience" className="w-full font-sans scroll-mt-24">
+      <Heading
+        title="Work Experience"
+        subtitle="A track record of driving innovation and results through software."
+      />
 
-      <div className="">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="p-6 md:p-8 group"
-        >
-          <div className="flex flex-col md:flex-row gap-6">
-            {/* Company Logo - Rounded border style from Hero */}
-            <div className="flex-none">
-              <div className="relative shrink-0 overflow-hidden rounded-full border border-zinc-200 dark:border-zinc-800 size-14 bg-zinc-50 dark:bg-zinc-900 p-1">
-                <img
-                  alt={experienceData.company ?? "company logo"}
-                  src={experienceData.logo}
-                  className="aspect-square h-full w-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="w-full bg-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 border border-border shadow-sm flex flex-col md:flex-row gap-6 sm:gap-8 lg:gap-12 transition-colors"
+      >
+        {/* Left Column: Company Info */}
+        <div className="flex-shrink-0 flex flex-col items-center md:items-start md:w-56 lg:w-64">
+          <div className="size-16 sm:size-20 rounded-xl sm:rounded-2xl bg-muted flex items-center justify-center overflow-hidden border border-border shadow-sm mb-4 sm:mb-6">
+            <img src={experienceData.logo} alt={experienceData.company} className="size-full object-cover" />
+          </div>
+
+          <h3 className="text-sm sm:text-base md:text-lg font-bold text-foreground text-center md:text-left leading-snug">
+            {experienceData.company}
+          </h3>
+          <span className="mt-1.5 px-2.5 py-1 text-[10px] sm:text-xs font-semibold bg-primary/10 text-primary rounded-full text-center">
+            {experienceData.role}
+          </span>
+
+          <div className="mt-4 sm:mt-6 space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground w-full">
+            <div className="flex items-center justify-center md:justify-start gap-2">
+              <Calendar size={13} className="shrink-0" />
+              <span>{experienceData.duration}</span>
             </div>
-
-            {/* Experience Content */}
-            <div className="flex-grow space-y-3">
-              <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h3 className="font-bold text-xl text-zinc-900 dark:text-zinc-100 tracking-tight">
-                      {experienceData.company}
-                    </h3>
-                    <button
-                      onClick={() => setExpanded((prev) => !prev)}
-                      className="p-1 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded transition-colors"
-                    >
-                      <motion.div
-                        animate={{ rotate: expanded ? 90 : 0 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                      >
-                        <ChevronRight className="h-4 w-4 text-zinc-400" />
-                      </motion.div>
-                    </button>
-                  </div>
-                  <p className="text-zinc-500 dark:text-zinc-400 font-medium">
-                    {experienceData.role}
-                  </p>
-                </div>
-
-                {/* Meta Info: Time and Location */}
-                <div className="flex flex-col md:items-end text-xs space-y-1 text-zinc-400 font-medium">
-                  <div className="flex items-center gap-2">
-                    <Calendar size={14} className="text-zinc-300 dark:text-zinc-700" />
-                    <span>{experienceData.duration}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin size={14} className="text-zinc-300 dark:text-zinc-700" />
-                    <span>{experienceData.location}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Expandable Details */}
-              <motion.div
-                className="overflow-hidden"
-                initial={false}
-                animate={expanded ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              >
-                <div className="pt-4 mt-4 border-t border-zinc-100 dark:border-zinc-900">
-                  <ul className="space-y-4 mb-6">
-                    {experienceData.workDone.map((point, i) => (
-                      <li key={i} className="flex gap-4 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                        <span className="text-zinc-300 dark:text-zinc-700 font-bold">//</span>
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Tech Stack Footer */}
-                  <div className="bg-zinc-50/50 dark:bg-zinc-900/30 p-4 border border-zinc-100 dark:border-zinc-900 rounded-lg">
-                    <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2">
-                      Technologies used
-                    </p>
-                    <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                      {experienceData.techStack}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+            <div className="flex items-center justify-center md:justify-start gap-2">
+              <MapPin size={13} className="shrink-0" />
+              <span>{experienceData.location}</span>
             </div>
           </div>
-        </motion.div>
-      </div>
+        </div>
+
+        {/* Divider */}
+        <div className="hidden md:block w-px bg-border" />
+
+        {/* Right Column: Details & Tech Stack */}
+        <div className="flex-1 border-t md:border-t-0 border-border pt-6 md:pt-0 flex flex-col justify-between gap-6 sm:gap-8">
+          <ul className="space-y-3 sm:space-y-4">
+            {experienceData.workDone.map((point, i) => (
+              <li key={i} className="flex gap-2.5 sm:gap-3 text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed">
+                <CheckCircle2 className="size-4 sm:size-[18px] shrink-0 text-primary mt-0.5" />
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="pt-5 sm:pt-6 border-t border-border">
+            <p className="text-[10px] sm:text-xs font-bold text-foreground uppercase tracking-widest mb-3 sm:mb-4">
+              Technologies Used
+            </p>
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+              {experienceData.techStack.split(", ").map((tech, i) => (
+                <span key={i} className="px-2 sm:px-3 py-1 sm:py-1.5 bg-muted text-muted-foreground text-[10px] sm:text-xs font-medium rounded-md sm:rounded-lg border border-border transition-colors hover:border-foreground/20">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

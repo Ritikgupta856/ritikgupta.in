@@ -1,62 +1,65 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { Sun, Moon, Github, Search } from "lucide-react";
+import { Sun, Moon } from "lucide-react";
+import Image from "next/image";
 
 const links = [
   { path: "#experience", name: "Experience" },
-  { path: "#education", name: "Education" },
   { path: "#projects", name: "Projects" },
+  { path: "#blogs", name: "Blogs" },
   { path: "#stack", name: "Stack" },
 ];
 
 const Header = () => {
-  const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-zinc-200 dark:border-zinc-800 backdrop-blur-md font-mono">
-      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-  
-        <Link href="/" className="flex items-center text-4xl font-bold gap-1">
-          RG
+    <header className="sticky top-4 sm:top-6 z-50 w-full flex justify-center font-sans tracking-tight px-4">
+      <div className="bg-background/80 backdrop-blur-xl rounded-full px-4 sm:px-6 py-2.5 flex items-center gap-4 sm:gap-6 border border-border shadow-lg shadow-black/5 max-w-fit">
+
+        {/* Logo / Brand */}
+        <Link href="/" className="flex items-center gap-2 sm:pr-4 sm:border-r sm:border-border shrink-0">
+          <div className="relative size-7 sm:size-8 rounded-full overflow-hidden ring-1 ring-border">
+            <Image src="/avatar.jpg" alt="Ritik Gupta" fill className="object-cover" />
+          </div>
+          <span className="font-bold text-foreground hidden sm:block text-sm tracking-tight">
+            Ritik Gupta
+          </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        {/* Nav links */}
+        <nav className="flex items-center gap-0.5 sm:gap-1">
           {links.map((link) => (
             <Link
               key={link.path}
               href={link.path}
-              className={`text-sm transition-colors ${
-                pathname === link.path
-                  ? "text-zinc-950 dark:text-zinc-50 font-bold"
-                  : "text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300"
-              }`}
+              className="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-all duration-150"
             >
               {link.name}
             </Link>
           ))}
         </nav>
 
-        {/* Right: Actions */}
-        <div className="">
-          {/* Theme Toggle */}
+        {/* Theme Toggle */}
+        <div className="sm:pl-2 sm:border-l sm:border-border flex items-center shrink-0">
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-1.5 text-zinc-500 hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors"
+            className="p-2 sm:p-2.5 text-muted-foreground hover:text-foreground hover:bg-muted rounded-full transition-colors"
+            aria-label="Toggle theme"
           >
-            {mounted &&
-              (theme === "dark" ? <Sun size={20} /> : <Moon size={20} />)}
+            {mounted && (theme === "dark" ? <Sun size={17} /> : <Moon size={17} />)}
           </button>
         </div>
+
       </div>
     </header>
   );
 };
 
 export default Header;
+
