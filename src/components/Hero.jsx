@@ -20,7 +20,7 @@ const Hero = () => {
           {/* Heading */}
           <h1 className="font-bold text-black dark:text-white text-3xl md:text-5xl text-zinc-50 leading-tight max-w-3xl mb-8">
             Hello, I&apos;m a{" "}
-            <span className="text-blue-400">
+            <span className="dark:text-blue-400 text-blue-500">
               software engineer.
             </span>
           </h1>
@@ -67,7 +67,7 @@ const Hero = () => {
 
         {/* Right: Image */}
         <div className="flex flex-col items-center relative flex-shrink-0 mt-12 md:mt-0">
-          <div className="w-72 h-72 lg:w-96 lg:h-96 rounded-2xl overflow-hidden relative shadow-2xl z-10 border border-white/10 ring-1 ring-black/5">
+          <div className="w-72 h-72 lg:w-96 lg:h-96 rounded-2xl overflow-hidden relative shadow-xl z-10 border border-white/10 ring-1 ring-black/5">
 
             <Image alt="Ritik Gupta" fill className="object-cover" src="/avatar.jpg" priority />
           </div>

@@ -9,8 +9,8 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="w-full font-sans border-t border-border mt-auto">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+    <footer className="max-w-5xl mx-auto w-full font-sans border-t border-border mt-auto">
+      <div className="px-4 sm:px-6 py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
         <p className="text-xs text-muted-foreground">
           © {new Date().getFullYear()} Ritik Gupta. All rights reserved.
         </p>

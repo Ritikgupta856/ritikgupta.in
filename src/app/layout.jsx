@@ -9,8 +9,32 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Ritik Gupta | Full Stack Developer",
-  description: "Personal portfolio website showcasing my skills and projects.",
+  title: "Ritik Gupta | Full Stack Software Engineer",
+  description: "I build fast, scalable, and production-ready web applications from the ground up — handling everything from frontend design to backend architecture and deployment.",
+  openGraph: {
+    title: "Ritik Gupta | Full Stack Software Engineer",
+    description: "I build fast, scalable, and production-ready web applications from the ground up — handling everything from frontend design to backend architecture and deployment.",
+    images: [
+      {
+        url: "/avatar.jpg",
+        width: 800,
+        height: 600,
+        alt: "Ritik Gupta",
+      },
+    ],
+  },
+  twitter: {
+    title: "Ritik Gupta | Full Stack Software Engineer",
+    description: "I build fast, scalable, and production-ready web applications from the ground up — handling everything from frontend design to backend architecture and deployment.",
+    images: [
+      {
+        url: "/avatar.jpg",
+        width: 800,
+        height: 600,
+        alt: "Ritik Gupta",
+      },
+    ],
+  },
   icons: {
     icon: "/avatar.jpg",
   },
