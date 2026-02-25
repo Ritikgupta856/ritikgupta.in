@@ -5,7 +5,6 @@ const socials = [
   { href: "https://github.com/ritikgupta856", icon: Github, label: "GitHub" },
   { href: "https://www.linkedin.com/in/ritikgupta856/", icon: Linkedin, label: "LinkedIn" },
   { href: "https://x.com/ritikgupta856", icon: IconBrandX, label: "X" },
-  { href: "mailto:ritikgupta856@gmail.com", icon: Mail, label: "Email" },
 ];
 
 export default function Footer() {
