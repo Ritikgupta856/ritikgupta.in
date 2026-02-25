@@ -1,60 +1,74 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Twitter, Linkedin } from "lucide-react";
+import { Github, Linkedin, X, ArrowRight } from "lucide-react";
+
 
 const socialLinks = [
-  { href: "https://github.com/Ritikgupta856", icon: Github, label: "GitHub" },
+  { href: "https://x.com/ritikgupta856", icon: X, label: "X" },
   { href: "https://linkedin.com/in/ritikgupta856", icon: Linkedin, label: "LinkedIn" },
-  { href: "https://x.com/ritikgupta856", icon: Twitter, label: "X" },
+  { href: "https://github.com/Ritikgupta856", icon: Github, label: "GitHub" },
 ];
 
 const Hero = () => {
   return (
     <section className="w-full font-sans tracking-tight">
-      {/* Desktop: side by side | Mobile: heading → about → image → socials */}
-      <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 md:gap-12 py-4 md:py-8">
+      <div className="flex flex-col md:flex-row items-center md:items-center justify-between gap-4 md:gap-12 py-8 md:py-12">
 
         {/* Left: Text content */}
-        <div className="flex-1 flex flex-col items-start text-left max-w-2xl w-full space-y-5">
+        <div className="flex-1 flex flex-col items-start text-left max-w-2xl w-full">
           {/* Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-foreground w-full text-left">
-            Hi, I&apos;m <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-600">Ritik Gupta.</span>
+          <h1 className="font-bold text-black dark:text-white text-3xl md:text-5xl text-zinc-50 leading-tight max-w-3xl mb-8">
+            Hello, I&apos;m a{" "}
+            <span className="text-blue-400">
+              software engineer.
+            </span>
           </h1>
 
           {/* About */}
-          <p className="text-muted-foreground text-sm md:text-base leading-relaxed text-justify w-full">
-            A passionate full-stack software engineer specializing in building scalable, modern web applications. I love turning complex problems into intuitive, beautiful designs. Currently focused on delivering highly responsive user interfaces and robust backend systems. Let&apos;s build something great together.
-          </p>
+          <div className="flex flex-col space-y-3 mb-8 w-full pr-0 md:pr-4">
+            <p className="text-zinc-400 text-sm md:text-base max-w-2xl leading-loose tracking-wide text-justify hyphens-auto">
+              I&apos;m a full-stack software engineer passionate about building modern web applications from the ground up.
+              I turn ideas into fast, scalable, and production-ready products — handling everything from frontend design
+              to backend architecture and deployment. I enjoy solving complex problems, improving performance, and
+              creating systems that are clean, reliable, and built to last.
 
-          {/* Image — mobile only, sits between about and social icons */}
-          <div className="flex md:hidden justify-center w-full py-4">
-            <div className="w-60 h-60 sm:w-64 sm:h-64 rounded-2xl overflow-hidden relative shadow-xl shadow-black/10 border border-edge">
-              <Image alt="Ritik Gupta" fill className="object-cover" src="/avatar.jpg" priority />
+            </p>
+          </div>
+
+          {/* Actions & Socials */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-6">
+            <Link
+              href="mailto:hello@ritikgupta.in"
+              className="flex items-center hidden sm:flex gap-2 px-6 py-3 bg-zinc-200 dark:bg-zinc-50 hover:bg-zinc-200 text-zinc-900 rounded-xl font-semibold transition-colors shadow-lg"
+            >
+              Get in Touch
+              <ArrowRight size={18} />
+            </Link>
+
+            {/* Social icons */}
+            <div className="flex items-center gap-5 sm:pl-2">
+              {socialLinks.map(({ href, icon: Icon, label }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="text-zinc-500 hover:text-blue-400 hover:-translate-y-1 transition-all duration-200"
+                >
+                  <Icon size={24} />
+                </Link>
+              ))}
             </div>
           </div>
 
-          {/* Social icons */}
-          <div className="flex items-center justify-center md:justify-start gap-3 pt-1 w-full">
-            {socialLinks.map(({ href, icon: Icon, label }) => (
-              <Link
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="size-11 flex items-center justify-center rounded-xl bg-muted border border-border text-muted-foreground hover:text-foreground hover:border-foreground/20 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
-              >
-                <Icon size={20} />
-              </Link>
-            ))}
-          </div>
         </div>
 
-        {/* Right: Image — desktop only */}
-        <div className="hidden md:flex relative flex-shrink-0">
-          <div className="w-72 h-72 lg:w-80 lg:h-80 rounded-3xl overflow-hidden relative shadow-xl shadow-black/10 border border-edge">
+        {/* Right: Image */}
+        <div className="flex flex-col items-center relative flex-shrink-0 mt-12 md:mt-0">
+          <div className="w-72 h-72 lg:w-96 lg:h-96 rounded-2xl overflow-hidden relative shadow-2xl z-10 border border-white/10 ring-1 ring-black/5">
+
             <Image alt="Ritik Gupta" fill className="object-cover" src="/avatar.jpg" priority />
           </div>
         </div>
@@ -65,3 +79,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
