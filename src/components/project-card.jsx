@@ -42,7 +42,7 @@ export default function ProjectCard({
 
       <div className="flex flex-1 flex-col p-5 pt-6 sm:p-6 sm:pt-7 md:p-8">
         <div className="mb-4 flex items-start justify-between gap-4">
-          <h3 className="text-lg font-bold leading-snug tracking-tight text-foreground sm:text-xl">
+          <h3 className="text-base md:text-lg font-bold leading-snug tracking-tight text-foreground sm:text-xl">
             {title}
           </h3>
           <div className="-mt-1 flex flex-shrink-0 items-center gap-1.5">

@@ -73,7 +73,7 @@ export default function Experience() {
 
               <div className="flex flex-col">
                 <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-                  <h3 className="text-lg font-bold tracking-tight text-foreground sm:text-xl">
+                  <h3 className="text-base md:text-lg font-bold tracking-tight text-foreground sm:text-xl">
                     {experience.company}
                   </h3>
 
@@ -82,7 +82,7 @@ export default function Experience() {
                     Working
                   </span>
                 </div>
-                <p className="mt-0.5 text-[14px] font-medium text-muted-foreground sm:text-[15px]">
+                <p className="mt-0.5 text-[14px] font-medium text-muted-foreground md:text-[15px]">
                   {experience.role}
                 </p>
 
