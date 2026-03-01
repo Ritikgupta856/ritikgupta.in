@@ -3,6 +3,21 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { getBlogBySlug } from "@/lib/mdx";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import Image from "next/image";
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const blog = getBlogBySlug(slug); // only if async
+
+  if (!blog) {
+    return { title: "Blog not found" };
+  }
+
+  return {
+    title: blog.title,
+    description: blog.description,
+  };
+}
 
 export default async function BlogPage(props) {
   const params = await props.params;
@@ -11,6 +26,7 @@ export default async function BlogPage(props) {
   if (!blog) {
     notFound();
   }
+
 
   return (
     <main className="min-h-screen bg-background text-foreground font-sans">
@@ -60,6 +76,19 @@ export default async function BlogPage(props) {
                   #{tag}
                 </span>
               ))}
+            </div>
+          )}
+
+          {blog.coverImage && (
+            <div className="mt-6 sm:mt-8 border-t border-border">
+              <Image
+                src={blog.coverImage}
+                alt={blog.title}
+                width={1200}
+                height={675}
+                priority
+                className="w-full h-auto"
+              />
             </div>
           )}
 

@@ -1,11 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, X, ArrowRight } from "lucide-react";
+import { Github, Linkedin, ArrowRight } from "lucide-react";
+import { IconBrandX } from "@tabler/icons-react";
 
 
 const socialLinks = [
-  { href: "https://x.com/ritikgupta856", icon: X, label: "X" },
+  { href: "https://x.com/ritikgupta856", icon: IconBrandX, label: "X" },
   { href: "https://linkedin.com/in/ritikgupta856", icon: Linkedin, label: "LinkedIn" },
   { href: "https://github.com/Ritikgupta856", icon: Github, label: "GitHub" },
 ];
@@ -18,7 +19,7 @@ const Hero = () => {
         {/* Left: Text content */}
         <div className="flex-1 flex flex-col items-start text-left max-w-2xl w-full">
           {/* Heading */}
-          <h1 className="font-bold text-black dark:text-white text-3xl md:text-5xl text-zinc-50 leading-tight max-w-3xl mb-8">
+          <h1 className="font-bold text-zinc-900 dark:text-white text-3xl md:text-5xl leading-tight max-w-3xl mb-8">
             Hello, I&apos;m a{" "}
             <span className="dark:text-blue-400 text-blue-500">
               software engineer.
@@ -27,7 +28,7 @@ const Hero = () => {
 
           {/* About */}
           <div className="flex flex-col space-y-3 mb-8 w-full pr-0 md:pr-4">
-            <p className="text-zinc-400 text-sm md:text-base max-w-2xl leading-loose tracking-wide text-justify hyphens-auto">
+            <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base max-w-2xl leading-loose tracking-wide text-justify hyphens-auto">
               I&apos;m a full-stack software engineer passionate about building modern web applications from the ground up.
               I turn ideas into fast, scalable, and production-ready products — handling everything from frontend design
               to backend architecture and deployment. I enjoy solving complex problems, improving performance, and
@@ -40,7 +41,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-6">
             <Link
               href="mailto:hello@ritikgupta.in"
-              className="flex items-center hidden sm:flex gap-2 px-6 py-3 bg-zinc-200 dark:bg-zinc-50 hover:bg-zinc-200 text-zinc-900 rounded-xl font-semibold transition-colors shadow-lg"
+              className="flex items-center hidden sm:flex gap-2 px-6 py-3 bg-zinc-900 dark:bg-zinc-50 hover:bg-zinc-800 dark:hover:bg-zinc-200 text-white dark:text-zinc-900 rounded-xl font-semibold transition-colors shadow-lg"
             >
               Get in Touch
               <ArrowRight size={18} />
@@ -55,7 +56,7 @@ const Hero = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="text-zinc-500 hover:text-blue-400 hover:-translate-y-1 transition-all duration-200"
+                  className="text-zinc-500 dark:text-zinc-400 hover:text-blue-500 dark:hover:text-blue-400 hover:-translate-y-1 transition-all duration-200"
                 >
                   <Icon size={24} />
                 </Link>
@@ -69,7 +70,7 @@ const Hero = () => {
         <div className="flex flex-col items-center relative flex-shrink-0 mt-12 md:mt-0">
           <div className="w-72 h-72 lg:w-96 lg:h-96 rounded-2xl overflow-hidden relative shadow-xl z-10 border border-white/10 ring-1 ring-black/5">
 
-            <Image alt="Ritik Gupta" fill className="object-cover" src="/avatar.jpg" priority />
+            <Image alt="Ritik Gupta" fill className="object-cover" src="/images/avatar.jpg" priority />
           </div>
         </div>
 

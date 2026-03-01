@@ -2,15 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  --line-color: black;
-  scroll-behavior: smooth;
-}
-
-html.dark {
-  --line-color: white;
-}
- 
 @layer base {
   :root {
     /* Zinc-based Light Theme */

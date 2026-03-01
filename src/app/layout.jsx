@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import GAInit from "@/components/Ga";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,7 +37,7 @@ export const metadata = {
     ],
   },
   icons: {
-    icon: "/avatar.jpg",
+    icon: "/images/avatar.jpg",
   },
 };
 
@@ -57,6 +58,7 @@ export default function RootLayout({ children }) {
             <div className="flex-1">
               {children}
             </div>
+            <ScrollToTop />
             <Footer />
           </div>
         </ThemeProvider>
@@ -64,3 +66,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+

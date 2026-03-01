@@ -3,7 +3,7 @@ import matter from "gray-matter";
 import path from "path";
 import { blogs } from "./data";
 
-const postsDirectory = path.join(process.cwd(), 'data/blogs')
+const postsDirectory = path.join(process.cwd(), 'src/data/blogs')
 
 export function getAllBlogs() {
   return [...blogs].sort((a, b) => (a.date < b.date ? 1 : -1));
