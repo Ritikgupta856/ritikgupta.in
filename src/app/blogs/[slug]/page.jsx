@@ -4,6 +4,9 @@ import { getBlogBySlug } from "@/lib/mdx";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import Image from "next/image";
+import mdxComponents from "@/components/mdx-components";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -122,7 +125,18 @@ export default async function BlogPage(props) {
         </header>
 
         <div className="prose">
-          <MDXRemote source={blog.content} />
+         <MDXRemote
+  source={blog.content}
+  components={mdxComponents}
+  options={{
+    mdxOptions: {
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [
+        rehypeSlug
+      ],
+    },
+  }}
+/>
         </div>
 
         <div className="mt-12 border-t border-border pt-8">

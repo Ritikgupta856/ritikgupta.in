@@ -15,10 +15,10 @@ const socialLinks = [
 ];
 
 const HeroActions = ({ className = "" }) => (
-  <div className={`mt-8 flex flex-col items-center gap-6 sm:flex-row sm:items-center ${className}`}>
+  <div className={`md:mt-8 flex flex-col items-center gap-6 sm:flex-row sm:items-center ${className}`}>
     <Link
       href="mailto:hello@ritikgupta.in"
-      className="group flex w-full items-center justify-center gap-2 rounded-2xl bg-zinc-900 px-8 py-4 text-[15px] font-bold text-white shadow-2xl transition-all active:scale-95 sm:w-auto dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
+      className="group hidden md:flex w-full items-center justify-center gap-2 rounded-2xl bg-zinc-900 px-8 md:py-4  text-[15px] font-bold text-white shadow-2xl transition-all active:scale-95 sm:w-auto dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
     >
       Get in Touch
       <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />

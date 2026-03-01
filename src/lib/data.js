@@ -4,10 +4,10 @@ export const experience = {
   duration: "May 2024 - Present",
   location: "Jaipur, India",
   workDone: [
-    "Built a scalable Meal Planning App (React.js, TypeScript, Node.js) serving 1,000+ users with i18n support, payment integration, and JWT authentication.",
-    "Developed an Admin Dashboard (React.js, Node.js, MySQL) managing multi-organization operations including tournaments, financials, and subscriptions.",
-    "Architected a jewelry e-commerce platform (Next.js SSR, Razorpay, Strapi CMS, Zustand) achieving 30% faster page loads.",
-    "Created a document processing app (React.js, Python LLM, Node.js, RabbitMQ) with split-view analysis and dynamic form conversion, reducing processing time by 70%.",
+    "Built a Meal Planning platform serving 1,000+ users, featuring multilingual support, secure authentication, and seamless payment integration.",
+    "Developed a comprehensive sports management platform streamlining tournaments, registrations, player and team management, scheduling, results, analytics, within a single unified dashboard.",
+    "Architected a jewelry e-commerce platform using Next.js (SSR), Razorpay integration, Strapi CMS, and Zustand, improving rendering efficiency and achieving 30% faster page loads.",
+    "Developed a document processing application using React, Python-based LLM integration, Node.js, and RabbitMQ for queue-based asynchronous processing, implementing split-view analysis and dynamic form conversion to reduce processing time by 70%.",
   ],
   techStack:
     "Next.js, React.js, TypeScript, Node.js, MySQL, Strapi CMS, Zustand, RabbitMQ, AWS, Tailwind CSS, Shadcn UI",

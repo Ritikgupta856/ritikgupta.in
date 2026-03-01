@@ -66,7 +66,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
         className={`${inter.className} bg-zinc-50 text-zinc-950 antialiased dark:bg-[#09090b] dark:text-zinc-50`}
       >
