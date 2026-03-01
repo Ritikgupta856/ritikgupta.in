@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import ProjectCard from "./ProjectCard";
+import ProjectCard from "./project-card";
 import { projects } from "@/lib/data";
 import { motion } from "framer-motion";
-import Heading from "./Heading";
+import Heading from "./heading";
 
 const Projects = () => {
   return (

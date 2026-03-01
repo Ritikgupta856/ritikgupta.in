@@ -28,7 +28,6 @@ export default function ProjectCard({
   };
   return (
     <div className="group flex w-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
-      {/* Top Image Box */}
       {image && (
         <div className="relative h-48 w-full overflow-hidden border-b border-border/50 sm:h-56">
           <Image
@@ -41,7 +40,6 @@ export default function ProjectCard({
         </div>
       )}
 
-      {/* Card Header & Content */}
       <div className="flex flex-1 flex-col p-5 pt-6 sm:p-6 sm:pt-7 md:p-8">
         <div className="mb-4 flex items-start justify-between gap-4">
           <h3 className="text-lg font-bold leading-snug tracking-tight text-foreground sm:text-xl">
@@ -80,7 +78,6 @@ export default function ProjectCard({
         )}
       </div>
 
-      {/* Tags Footer */}
       {tags && tags.length > 0 && (
         <div className="border-t border-border bg-muted/10 px-5 py-4 sm:px-6 sm:py-5 md:px-8">
           <div className="flex flex-wrap gap-2 sm:gap-2.5">

@@ -21,9 +21,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-4 z-50 flex w-full justify-center px-4 font-sans tracking-tight sm:top-6">
-      {/* Floating Pill Navbar */}
       <div className="flex w-full items-center justify-between gap-2 rounded-full border border-zinc-200/50 bg-white/80 px-4 py-2 shadow-lg shadow-black/5 backdrop-blur-2xl sm:gap-6 sm:px-6 sm:py-2.5 md:w-auto md:max-w-fit dark:border-white/10 dark:bg-zinc-900/80 dark:shadow-black/20">
-        {/* Logo / Brand */}
         <Link
           href="/"
           className="group flex shrink-0 items-center gap-2 border-zinc-200 sm:border-r sm:pr-4 dark:border-white/10"
@@ -36,12 +34,11 @@ const Header = () => {
               className="object-cover"
             />
           </div>
-          <span className="hidden text-sm font-bold tracking-tight text-zinc-900 transition-colors group-hover:text-blue-500 md:block dark:text-zinc-100">
+          <span className="text-sm font-bold tracking-tight text-zinc-900 transition-colors group-hover:text-blue-500 md:block dark:text-zinc-100">
             Ritik Gupta
           </span>
         </Link>
 
-        {/* Desktop Nav links */}
         <nav className="hidden items-center gap-1 sm:gap-2 md:flex">
           {links.map((link) => (
             <Link
@@ -54,7 +51,6 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* Theme Toggle & Mobile Menu Trigger */}
         <div className="flex shrink-0 items-center gap-1 border-zinc-200 md:border-l md:pl-4 dark:border-white/10">
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -75,7 +71,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
         <div className="absolute inset-x-4 top-[4.5rem] mx-auto flex max-w-sm flex-col gap-2 rounded-3xl border border-zinc-200/50 bg-white/95 p-4 shadow-2xl backdrop-blur-2xl md:hidden dark:border-white/10 dark:bg-zinc-900/95">
           {links.map((link) => (

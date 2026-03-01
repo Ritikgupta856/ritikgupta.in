@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const blog = getBlogBySlug(slug); // only if async
+  const blog = getBlogBySlug(slug);
 
   if (!blog) {
     return { title: "Blog not found" };
@@ -16,6 +16,27 @@ export async function generateMetadata({ params }) {
   return {
     title: blog.title,
     description: blog.description,
+    openGraph: {
+      title: blog.title,
+      description: blog.description,
+      type: "article",
+      publishedTime: blog.date,
+      authors: ["Ritik Gupta"],
+      images: [
+        {
+          url: blog.coverImage || "/images/avatar.jpg",
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: blog.title,
+      description: blog.description,
+      images: [blog.coverImage || "/images/avatar.jpg"],
+    },
   };
 }
 
@@ -30,7 +51,6 @@ export default async function BlogPage(props) {
   return (
     <main className="min-h-screen bg-background font-sans text-foreground">
       <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-16">
-        {/* Back button */}
         <Link
           href="/#blogs"
           className="group mb-8 inline-flex items-center gap-2 text-xs text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
@@ -42,7 +62,6 @@ export default async function BlogPage(props) {
           Back to blogs
         </Link>
 
-        {/* Blog header */}
         <header className="mb-8 sm:mb-12">
           <h1 className="mb-4 text-2xl font-extrabold leading-tight tracking-tight text-foreground sm:text-3xl md:text-4xl">
             {blog.title}
@@ -89,27 +108,23 @@ export default async function BlogPage(props) {
           )}
 
           {blog.coverImage && (
-            <div className="mt-6 border-t border-border sm:mt-8">
+            <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-muted shadow-sm sm:mt-12">
               <Image
                 src={blog.coverImage}
                 alt={blog.title}
                 width={1200}
-                height={675}
+                height={400}
                 priority
-                className="h-auto w-full"
+                className="h-auto w-full object-cover transition-transform duration-500 hover:scale-[1.02]"
               />
             </div>
           )}
-
-          <div className="mt-6 border-t border-border sm:mt-8" />
         </header>
 
-        {/* Blog Content */}
         <div className="prose">
           <MDXRemote source={blog.content} />
         </div>
 
-        {/* Footer nav */}
         <div className="mt-12 border-t border-border pt-8">
           <Link
             href="/#blogs"

@@ -1,11 +1,12 @@
-import BlogCards from "@/components/BlogCards";
-import Heading from "@/components/Heading";
+import BlogCards from "@/components/blog-cards";
+import Heading from "@/components/heading";
 import { getAllBlogs } from "@/lib/mdx";
 import React from "react";
 
 export const metadata = {
-  title: "Blogs | Ritik Gupta",
-  description: "Recent blog posts about software engineering and web development.",
+  title: "Blogs",
+  description:
+    "Explore a collection of technical guides, deep dives, and insights on modern web development, React, and software engineering by Ritik Gupta.",
 };
 
 export default function Page() {

@@ -1,10 +1,10 @@
-import Hero from "@/components/Hero";
-import Projects from "@/components/Projects";
-import Chatbot from "@/components/ChatBot";
-import Experience from "@/components/Experience";
-import Stack from "@/components/Stack";
-import BlogCard from "@/components/BlogCards";
-import Heading from "@/components/Heading";
+import Hero from "@/components/hero";
+import Projects from "@/components/projects";
+import Chatbot from "@/components/chat-bot";
+import Experience from "@/components/experience";
+import Stack from "@/components/stack";
+import BlogCard from "@/components/blog-cards";
+import Heading from "@/components/heading";
 import { blogs } from "@/lib/data";
 
 export default function Home() {

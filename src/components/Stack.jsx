@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { stack } from "@/lib/data";
 import Image from "next/image";
-import Heading from "./Heading";
+import Heading from "./heading";
 
 const tagVariants = {
   hidden: { opacity: 0, scale: 0.9, y: 10 },
@@ -44,7 +44,6 @@ export default function Stack() {
                 whileHover="hover"
                 className="group relative flex size-14 cursor-pointer items-center justify-center rounded-2xl border border-border bg-muted transition-all hover:border-foreground/20 hover:bg-background hover:shadow-md md:size-16"
               >
-                {/* Icon */}
                 {Icon ? (
                   typeof Icon === "string" ? (
                     <div className="relative size-7 transition-transform duration-300 group-hover:scale-110 md:size-8">
@@ -62,13 +61,11 @@ export default function Stack() {
                   <div className="size-5 rounded-full bg-foreground/20 transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary/50" />
                 )}
 
-                {/* Hover Tooltip */}
                 <div className="pointer-events-none absolute -top-12 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-md bg-foreground px-3 py-1.5 text-xs font-semibold text-background opacity-0 shadow-xl transition-opacity group-hover:opacity-100">
                   {skill.name}
                   <div className="absolute left-1/2 top-full -translate-x-1/2 border-4 border-transparent border-t-foreground" />
                 </div>
 
-                {/* Subtle gradient glow effect on absolute hover */}
                 <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 to-cyan-500/0 transition-colors group-hover:from-blue-500/10 group-hover:to-cyan-500/10" />
               </motion.div>
             );
