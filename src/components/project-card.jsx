@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Github, ExternalLink, ArrowUpRight } from "lucide-react";
+import { Github, ArrowUpRight } from "lucide-react";
 
 import Image from "next/image";
 import { stack } from "@/lib/data";
