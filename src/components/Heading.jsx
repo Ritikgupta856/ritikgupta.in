@@ -3,12 +3,12 @@ import React from "react";
 
 const Heading = ({ title, subtitle, className = "" }) => {
   return (
-    <div className={`mb-8 sm:mb-10 text-left ${className}`}>
-      <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight flex items-center gap-3 justify-start">
+    <div className={`mb-8 text-left sm:mb-10 ${className}`}>
+      <h2 className="flex items-center justify-start gap-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
         {title}
       </h2>
       {subtitle && (
-        <p className="text-muted-foreground mt-2 text-xs sm:text-sm md:text-base max-w-2xl">
+        <p className="mt-2 max-w-2xl text-xs text-muted-foreground sm:text-sm md:text-base">
           {subtitle}
         </p>
       )}

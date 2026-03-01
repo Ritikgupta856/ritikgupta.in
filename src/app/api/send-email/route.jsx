@@ -1,6 +1,5 @@
-
-import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 export async function POST(req) {
   try {
@@ -9,7 +8,7 @@ export async function POST(req) {
     if (!name || !email || !message) {
       return NextResponse.json(
         { message: "All fields are required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -20,7 +19,6 @@ export async function POST(req) {
         pass: process.env.EMAIL_PASS,
       },
     });
-
 
     const mailOptions = {
       from: email,
@@ -172,14 +170,13 @@ export async function POST(req) {
 
     return NextResponse.json(
       { message: "Message sent successfully!" },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error("Error sending email:", error);
     return NextResponse.json(
       { message: "Failed to send message", error: error.message },
-      { status: 500 }
-
+      { status: 500 },
     );
   }
 }

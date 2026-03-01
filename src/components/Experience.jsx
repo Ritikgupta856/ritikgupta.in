@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { experienceData, stack } from "@/lib/data";
+import { experience, stack } from "@/lib/data";
 import Heading from "./Heading";
 
 const fadeUp = (delay = 0) => ({
@@ -30,7 +30,7 @@ const techItem = {
 };
 
 export default function Experience() {
-  const techs = experienceData.techStack.split(", ");
+  const techs = experience.techStack.split(", ");
 
   const getTechIcon = (techName) => {
     const searchName = techName.toLowerCase().trim();
@@ -39,80 +39,82 @@ export default function Experience() {
 
     // if not found, try partial match (e.g. "Tailwind CSS" matches "Tailwind")
     if (!matched) {
-      matched = stack.find((s) => searchName.includes(s.name.toLowerCase()) || s.name.toLowerCase().includes(searchName));
+      matched = stack.find(
+        (s) =>
+          searchName.includes(s.name.toLowerCase()) ||
+          s.name.toLowerCase().includes(searchName),
+      );
     }
     return matched ? matched.icon : null;
   };
 
   return (
-    <section id="experience" className="w-full font-sans scroll-mt-24">
+    <section id="experience" className="w-full scroll-mt-24 font-sans">
       <Heading
         title="Work Experience"
         subtitle="A track record of driving innovation and results through software."
       />
 
-      <motion.div
-        {...fadeUp()}
-        className="w-full mt-8"
-      >
+      <motion.div {...fadeUp()} className="mt-8 w-full">
         <div className="flex flex-col gap-6">
-
           {/* Top Section: Logo, Company, Role, Date, Location */}
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-            <div className="flex gap-4 items-start">
+          <div className="flex flex-col justify-between gap-4 md:flex-row md:items-start">
+            <div className="flex items-start gap-4">
               {/* Logo */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.88 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, ease: [0.34, 1.56, 0.64, 1] }}
-                className="size-12 sm:size-14 rounded-2xl bg-black dark:bg-white flex items-center justify-center overflow-hidden shrink-0 mt-1"
+                className="mt-1 flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-black sm:size-14 dark:bg-white"
               >
                 <img
-                  src={experienceData.logo}
-                  alt={experienceData.company}
+                  src={experience.logo}
+                  alt={experience.company}
                   className="size-full object-cover"
                 />
               </motion.div>
 
               {/* Company & Role */}
-              <div className="flex flex-col mt-0.5 sm:mt-1">
+              <div className="mt-0.5 flex flex-col sm:mt-1">
                 <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-                  <h3 className="text-[17px] sm:text-xl font-bold text-foreground tracking-tight">
-                    {experienceData.company}
+                  <h3 className="text-[17px] font-bold tracking-tight text-foreground sm:text-xl">
+                    {experience.company}
                   </h3>
 
                   {/* Status Pill */}
-                  <span className="flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] sm:text-[11px] font-semibold">
-                    <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-600 sm:px-2.5 sm:py-1 sm:text-[11px] dark:text-emerald-400">
+                    <span className="size-1.5 animate-pulse rounded-full bg-emerald-500" />
                     Working
                   </span>
                 </div>
-                <p className="text-[13px] sm:text-[15px] text-muted-foreground font-medium mt-0.5">
-                  {experienceData.role}
+                <p className="mt-0.5 text-[13px] font-medium text-muted-foreground sm:text-[15px]">
+                  {experience.role}
                 </p>
               </div>
             </div>
 
             {/* Date & Location */}
-            <div className="flex flex-col md:items-end text-[12px] sm:text-sm text-muted-foreground/80 font-medium pl-[4.0rem] sm:pl-[4.5rem] md:pl-0 -mt-2 md:mt-1.5">
-              <p>{experienceData.duration}</p>
-              <p>{experienceData.location}</p>
+            <div className="-mt-2 flex flex-col pl-[4.0rem] text-[12px] font-medium text-muted-foreground/80 sm:pl-[4.5rem] sm:text-sm md:mt-1.5 md:items-end md:pl-0">
+              <p>{experience.duration}</p>
+              <p>{experience.location}</p>
             </div>
           </div>
 
           {/* Tech stack */}
-          <div className="flex flex-col gap-3 mt-2 sm:mt-4">
+          <div className="mt-2 flex flex-col gap-3 sm:mt-4">
             <motion.h4
               {...fadeUp(0.1)}
-              className="font-bold text-foreground text-[14px] sm:text-[15px]"
+              className="text-[14px] font-bold text-foreground sm:text-[15px]"
             >
               Technologies & Tools
             </motion.h4>
             <motion.div
               variants={{
                 initial: {},
-                whileInView: { transition: { staggerChildren: 0.04, delayChildren: 0.1 } },
+                whileInView: {
+                  transition: { staggerChildren: 0.04, delayChildren: 0.1 },
+                },
               }}
               initial="initial"
               whileInView="whileInView"
@@ -126,12 +128,16 @@ export default function Experience() {
                     key={i}
                     variants={techItem}
                     whileHover={{ y: -1.5, transition: { duration: 0.15 } }}
-                    className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 bg-muted/40 dark:bg-muted/10 hover:bg-muted/60 dark:hover:bg-muted/30 text-foreground text-[11px] sm:text-xs font-semibold rounded-[10px] sm:rounded-xl border border-border/80 border-dashed cursor-default select-none shadow-sm transition-colors"
+                    className="flex cursor-default select-none items-center gap-1.5 rounded-[10px] border border-dashed border-border/80 bg-muted/40 px-2.5 py-1.5 text-[11px] font-semibold text-foreground shadow-sm transition-colors hover:bg-muted/60 sm:gap-2 sm:rounded-xl sm:px-3 sm:text-xs dark:bg-muted/10 dark:hover:bg-muted/30"
                   >
                     {icon ? (
-                      <img src={icon} alt={tech} className="size-3.5 object-contain" />
+                      <img
+                        src={icon}
+                        alt={tech}
+                        className="size-3.5 object-contain"
+                      />
                     ) : (
-                      <div className="size-1.5 rounded-full bg-foreground/30 mx-0.5" />
+                      <div className="mx-0.5 size-1.5 rounded-full bg-foreground/30" />
                     )}
                     {tech}
                   </motion.div>
@@ -146,20 +152,19 @@ export default function Experience() {
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true }}
-            className="space-y-2.5 mt-2 sm:mt-4"
+            className="mt-2 space-y-2.5 sm:mt-4"
           >
-            {experienceData.workDone.map((point, i) => (
+            {experience.workDone.map((point, i) => (
               <motion.li
                 key={i}
                 variants={listItem}
-                className="flex items-start text-[13px] sm:text-[14px] text-muted-foreground leading-relaxed"
+                className="flex items-start text-[13px] leading-relaxed text-muted-foreground sm:text-[14px]"
               >
-                <div className="mr-3 w-1 h-1 sm:w-1.5 sm:h-1.5 bg-muted-foreground/40 mt-[0.6em] shrink-0" />
+                <div className="mr-3 mt-[0.6em] h-1 w-1 shrink-0 bg-muted-foreground/40 sm:h-1.5 sm:w-1.5" />
                 <span>{point}</span>
               </motion.li>
             ))}
           </motion.ul>
-
         </div>
       </motion.div>
     </section>

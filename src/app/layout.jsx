@@ -11,13 +11,15 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Ritik Gupta | Full Stack Software Engineer",
-  description: "I build fast, scalable, and production-ready web applications from the ground up — handling everything from frontend design to backend architecture and deployment.",
+  description:
+    "I build fast, scalable, and production-ready web applications from the ground up — handling everything from frontend design to backend architecture and deployment.",
   openGraph: {
     title: "Ritik Gupta | Full Stack Software Engineer",
-    description: "I build fast, scalable, and production-ready web applications from the ground up — handling everything from frontend design to backend architecture and deployment.",
+    description:
+      "I build fast, scalable, and production-ready web applications from the ground up — handling everything from frontend design to backend architecture and deployment.",
     images: [
       {
-        url: "/avatar.jpg",
+        url: "/images/avatar.jpg",
         width: 800,
         height: 600,
         alt: "Ritik Gupta",
@@ -26,10 +28,11 @@ export const metadata = {
   },
   twitter: {
     title: "Ritik Gupta | Full Stack Software Engineer",
-    description: "I build fast, scalable, and production-ready web applications from the ground up — handling everything from frontend design to backend architecture and deployment.",
+    description:
+      "I build fast, scalable, and production-ready web applications from the ground up — handling everything from frontend design to backend architecture and deployment.",
     images: [
       {
-        url: "/avatar.jpg",
+        url: "/images/avatar.jpg",
         width: 800,
         height: 600,
         alt: "Ritik Gupta",
@@ -44,7 +47,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-zinc-50 dark:bg-[#09090b] text-zinc-950 dark:text-zinc-50 antialiased`}>
+      <body
+        className={`${inter.className} bg-zinc-50 text-zinc-950 antialiased dark:bg-[#09090b] dark:text-zinc-50`}
+      >
         <GAInit />
         <Toaster />
         <ThemeProvider
@@ -55,9 +60,7 @@ export default function RootLayout({ children }) {
         >
           <div className="relative flex min-h-screen flex-col">
             <Header />
-            <div className="flex-1">
-              {children}
-            </div>
+            <div className="flex-1">{children}</div>
             <ScrollToTop />
             <Footer />
           </div>
@@ -66,4 +69,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-

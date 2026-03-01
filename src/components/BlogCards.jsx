@@ -8,23 +8,23 @@ const BlogCard = ({ blog }) => {
   return (
     <Link
       href={`/blogs/${blog.slug}`}
-      className="group rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 flex flex-col overflow-hidden block"
+      className="group block flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
     >
       {/* Blog Image */}
       {blog.coverImage && (
-        <div className="relative w-full h-52 sm:h-60 overflow-hidden border-b border-border shrink-0">
+        <div className="relative h-52 w-full shrink-0 overflow-hidden border-b border-border sm:h-60">
           <Image
             src={blog.coverImage}
             alt={blog.title}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
+            className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
           />
         </div>
       )}
 
-      <div className="p-4 sm:p-5 flex flex-col gap-2.5 flex-grow">
+      <div className="flex flex-grow flex-col gap-2.5 p-4 sm:p-5">
         {/* Meta row */}
-        <div className="flex items-center gap-2 text-[10px] sm:text-xs text-muted-foreground font-medium">
+        <div className="flex items-center gap-2 text-[10px] font-medium text-muted-foreground sm:text-xs">
           {blog.date && (
             <span>
               {new Date(blog.date).toLocaleDateString(undefined, {
@@ -43,28 +43,28 @@ const BlogCard = ({ blog }) => {
         </div>
 
         {/* Title */}
-        <h3 className="text-sm sm:text-base md:text-lg font-bold text-foreground group-hover:text-primary transition-colors leading-snug line-clamp-2">
+        <h3 className="line-clamp-2 text-sm font-bold leading-snug text-foreground transition-colors group-hover:text-primary sm:text-base md:text-lg">
           {blog.title}
         </h3>
 
         {/* Summary */}
-        <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed line-clamp-2 flex-grow">
+        <p className="line-clamp-2 flex-grow text-xs leading-relaxed text-muted-foreground sm:text-sm">
           {blog.summary || blog.description}
         </p>
 
         {/* Footer: tags + read arrow */}
-        <div className="flex items-center justify-between mt-1 gap-2">
+        <div className="mt-1 flex items-center justify-between gap-2">
           <div className="flex flex-wrap gap-1.5">
             {blog.tags?.map((tag) => (
               <span
                 key={tag}
-                className="text-[10px] sm:text-xs font-medium bg-muted text-muted-foreground border border-border px-2 py-0.5 rounded-full"
+                className="rounded-full border border-border bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground sm:text-xs"
               >
                 #{tag}
               </span>
             ))}
           </div>
-          <span className="shrink-0 size-7 sm:size-8 flex items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+          <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white sm:size-8">
             <ArrowUpRight size={14} />
           </span>
         </div>
@@ -74,4 +74,3 @@ const BlogCard = ({ blog }) => {
 };
 
 export default BlogCard;
-

@@ -7,13 +7,13 @@ import Heading from "./Heading";
 
 const Projects = () => {
   return (
-    <section id="projects" className="w-full font-sans scroll-mt-24">
+    <section id="projects" className="w-full scroll-mt-24 font-sans">
       <Heading
         title="Featured Projects"
         subtitle="A selection of my recent work in building modern web applications."
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
         {projects.map((project, index) => (
           <motion.div
             key={index}

@@ -20,27 +20,34 @@ const Header = () => {
   useEffect(() => setMounted(true), []);
 
   return (
-    <header className="sticky top-4 sm:top-6 z-50 w-full flex justify-center font-sans tracking-tight px-4">
+    <header className="sticky top-4 z-50 flex w-full justify-center px-4 font-sans tracking-tight sm:top-6">
       {/* Floating Pill Navbar */}
-      <div className="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-2xl rounded-full px-4 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-6 border border-zinc-200/50 dark:border-white/10 shadow-lg shadow-black/5 dark:shadow-black/20 w-full md:w-auto md:max-w-fit">
-
+      <div className="flex w-full items-center justify-between gap-2 rounded-full border border-zinc-200/50 bg-white/80 px-4 py-2 shadow-lg shadow-black/5 backdrop-blur-2xl sm:gap-6 sm:px-6 sm:py-2.5 md:w-auto md:max-w-fit dark:border-white/10 dark:bg-zinc-900/80 dark:shadow-black/20">
         {/* Logo / Brand */}
-        <Link href="/" className="flex items-center gap-2 sm:pr-4 sm:border-r border-zinc-200 dark:border-white/10 shrink-0 group">
-          <div className="relative size-8 rounded-full overflow-hidden ring-1 ring-zinc-200 dark:ring-white/10 group-hover:ring-blue-400/50 transition-colors">
-            <Image src="/avatar.jpg" alt="Ritik Gupta" fill className="object-cover" />
+        <Link
+          href="/"
+          className="group flex shrink-0 items-center gap-2 border-zinc-200 sm:border-r sm:pr-4 dark:border-white/10"
+        >
+          <div className="relative size-8 overflow-hidden rounded-full ring-1 ring-zinc-200 transition-colors group-hover:ring-blue-400/50 dark:ring-white/10">
+            <Image
+              src="/images/avatar.jpg"
+              alt="Ritik Gupta"
+              fill
+              className="object-cover"
+            />
           </div>
-          <span className="font-bold text-zinc-900 dark:text-zinc-100 hidden md:block text-sm tracking-tight group-hover:text-blue-500 transition-colors">
+          <span className="hidden text-sm font-bold tracking-tight text-zinc-900 transition-colors group-hover:text-blue-500 md:block dark:text-zinc-100">
             Ritik Gupta
           </span>
         </Link>
 
         {/* Desktop Nav links */}
-        <nav className="hidden md:flex items-center gap-1 sm:gap-2">
+        <nav className="hidden items-center gap-1 sm:gap-2 md:flex">
           {links.map((link) => (
             <Link
               key={link.path}
               href={link.path}
-              className="px-3 sm:px-4 py-1.5 sm:py-2 text-[13px] sm:text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 hover:bg-zinc-100/80 dark:hover:text-zinc-100 dark:hover:bg-white/10 rounded-full transition-all duration-200"
+              className="rounded-full px-3 py-1.5 text-[13px] font-medium text-zinc-600 transition-all duration-200 hover:bg-zinc-100/80 hover:text-zinc-900 sm:px-4 sm:py-2 sm:text-sm dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-zinc-100"
             >
               {link.name}
             </Link>
@@ -48,35 +55,35 @@ const Header = () => {
         </nav>
 
         {/* Theme Toggle & Mobile Menu Trigger */}
-        <div className="md:pl-4 md:border-l border-zinc-200 dark:border-white/10 flex items-center gap-1 shrink-0">
+        <div className="flex shrink-0 items-center gap-1 border-zinc-200 md:border-l md:pl-4 dark:border-white/10">
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 hover:bg-zinc-100/80 dark:hover:text-zinc-100 dark:hover:bg-white/10 rounded-full transition-colors flex items-center justify-center"
+            className="flex items-center justify-center rounded-full p-2 text-zinc-600 transition-colors hover:bg-zinc-100/80 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-zinc-100"
             aria-label="Toggle theme"
           >
-            {mounted && (theme === "dark" ? <Sun size={18} /> : <Moon size={18} />)}
+            {mounted &&
+              (theme === "dark" ? <Sun size={18} /> : <Moon size={18} />)}
           </button>
 
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 hover:bg-zinc-100/80 dark:hover:text-zinc-100 dark:hover:bg-white/10 rounded-full transition-colors flex items-center justify-center"
+            className="flex items-center justify-center rounded-full p-2 text-zinc-600 transition-colors hover:bg-zinc-100/80 hover:text-zinc-900 md:hidden dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-zinc-100"
             aria-label="Toggle mobile menu"
           >
             {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
-
       </div>
 
       {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
-        <div className="absolute top-[4.5rem] inset-x-4 mx-auto max-w-sm bg-white/95 dark:bg-zinc-900/95 backdrop-blur-2xl border border-zinc-200/50 dark:border-white/10 rounded-3xl shadow-2xl p-4 flex flex-col gap-2 md:hidden">
+        <div className="absolute inset-x-4 top-[4.5rem] mx-auto flex max-w-sm flex-col gap-2 rounded-3xl border border-zinc-200/50 bg-white/95 p-4 shadow-2xl backdrop-blur-2xl md:hidden dark:border-white/10 dark:bg-zinc-900/95">
           {links.map((link) => (
             <Link
               key={link.path}
               href={link.path}
               onClick={() => setIsMenuOpen(false)}
-              className="px-4 py-3 text-[15px] font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 hover:bg-zinc-100/80 dark:hover:text-zinc-100 dark:hover:bg-white/10 rounded-2xl transition-all duration-200"
+              className="rounded-2xl px-4 py-3 text-[15px] font-medium text-zinc-600 transition-all duration-200 hover:bg-zinc-100/80 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-zinc-100"
             >
               {link.name}
             </Link>
@@ -103,10 +110,14 @@ export const CopyButton = ({ text }) => {
   return (
     <button
       onClick={copy}
-      className="absolute right-4 top-4 p-2 rounded-md bg-zinc-800/50 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-700/80 transition-all opacity-0 group-hover:opacity-100 border border-zinc-700/50 backdrop-blur-sm shadow-xl z-20"
+      className="absolute right-4 top-4 z-20 rounded-md border border-zinc-700/50 bg-zinc-800/50 p-2 text-zinc-400 opacity-0 shadow-xl backdrop-blur-sm transition-all hover:bg-zinc-700/80 hover:text-zinc-100 group-hover:opacity-100"
       aria-label="Copy code"
     >
-      {isCopied ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} />}
+      {isCopied ? (
+        <Check size={16} className="text-emerald-400" />
+      ) : (
+        <Copy size={16} />
+      )}
     </button>
   );
 };

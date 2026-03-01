@@ -65,7 +65,7 @@ const Chatbot = () => {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-full shadow-lg hover:shadow-blue-500/25 hover:-translate-y-1 transition-all z-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        className="fixed bottom-4 right-4 z-50 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 p-4 text-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-blue-500/25 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 md:bottom-6 md:right-6"
         aria-label={isOpen ? "Close chatbot" : "Open chatbot"}
       >
         {isOpen ? <X /> : <MessageCircle />}
@@ -76,12 +76,12 @@ const Chatbot = () => {
           variants={fadeInVariants}
           initial="hidden"
           animate="visible"
-          className="fixed bottom-20 right-6 md:bottom-24 md:right-10 bg-card border border-border p-6 rounded-2xl shadow-2xl w-80 md:w-96 z-40"
+          className="fixed bottom-20 right-6 z-40 w-80 rounded-2xl border border-border bg-card p-6 shadow-2xl md:bottom-24 md:right-10 md:w-96"
         >
-          <div className="text-xl font-bold mb-1 text-foreground">
+          <div className="mb-1 text-xl font-bold text-foreground">
             Get in Touch
           </div>
-          <div className="text-sm font-medium mb-6 text-muted-foreground">
+          <div className="mb-6 text-sm font-medium text-muted-foreground">
             I&apos;d love to hear from you!
           </div>
 
@@ -98,7 +98,7 @@ const Chatbot = () => {
                 type="text"
                 id="name"
                 name="username"
-                className="mt-2 bg-background border-border focus:border-primary placeholder:text-muted-foreground"
+                className="mt-2 border-border bg-background placeholder:text-muted-foreground focus:border-primary"
                 placeholder="Your Name"
                 required
                 aria-required="true"
@@ -113,7 +113,7 @@ const Chatbot = () => {
                 type="email"
                 id="email"
                 name="email"
-                className="mt-2 bg-background border-border focus:border-primary placeholder:text-muted-foreground"
+                className="mt-2 border-border bg-background placeholder:text-muted-foreground focus:border-primary"
                 placeholder="Your Email ID"
                 required
                 aria-required="true"
@@ -128,7 +128,7 @@ const Chatbot = () => {
                 placeholder="Type your message here"
                 name="message"
                 id="msg"
-                className="mt-2 bg-background border-border focus:border-primary placeholder:text-muted-foreground resize-none"
+                className="mt-2 resize-none border-border bg-background placeholder:text-muted-foreground focus:border-primary"
                 rows={4}
                 required
                 aria-required="true"
@@ -137,7 +137,7 @@ const Chatbot = () => {
 
             <Button
               type="submit"
-              className="mt-4 w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:opacity-90 transition-opacity text-white font-semibold py-2.5 rounded-lg shadow-md border-none"
+              className="mt-4 w-full rounded-lg border-none bg-gradient-to-r from-blue-500 to-blue-600 py-2.5 font-semibold text-white shadow-md transition-opacity hover:opacity-90"
               disabled={isLoading}
             >
               {isLoading ? "Sending..." : "Send Message"}

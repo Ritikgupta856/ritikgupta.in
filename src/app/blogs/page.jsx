@@ -1,31 +1,30 @@
 import BlogCards from "@/components/BlogCards";
-import { Separator } from "@/components/ui/separator";
+import Heading from "@/components/Heading";
 import { getAllBlogs } from "@/lib/mdx";
 import React from "react";
 
 export const metadata = {
   title: "Blogs | Ritik Gupta",
-  description: "Personal portfolio website showcasing my skills and projects.",
+  description: "Recent blog posts about software engineering and web development.",
 };
 
 export default function Page() {
   const blogs = getAllBlogs();
 
   return (
-    <div className="max-w-3xl min-h-screen mx-auto flex flex-col gap-8 md:gap-12 px-4 mt-10">
-      <div className="text-center mt-10">
-        <h1 className="text-4xl font-bold">Blogs</h1>
-        <Separator className="mt-10" />
-      </div>
+    <main className="min-h-screen bg-background text-foreground selection:bg-primary/20 selection:text-primary">
+      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
+        <Heading
+          title="Blogs"
+          subtitle="A collection of my thoughts, technical guides, and experiences in the world of software development."
+        />
 
-      <div>
-        <h2>Latest Posts</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-8">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {blogs.map((blog) => (
-          <BlogCards key={blog.slug} blog={blog} />
+            <BlogCards key={blog.slug} blog={blog} />
           ))}
         </div>
       </div>
-    </div>
+    </main>
   );
 }

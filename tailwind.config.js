@@ -1,9 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
-  content: [
-    './src/**/*.{js,jsx}',
-  ],
+  content: ["./src/**/*.{js,jsx}"],
   theme: {
     container: {
       center: true,
@@ -15,7 +13,7 @@ module.exports = {
     extend: {
       colors: {
         border: "hsl(var(--border))",
-         edge: "hsl(var(--edge))",  // Add this
+        edge: "hsl(var(--edge))", // Add this
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
@@ -71,4 +69,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
