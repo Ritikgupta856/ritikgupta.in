@@ -15,13 +15,18 @@ const socialLinks = [
 ];
 
 const HeroActions = ({ className = "" }) => (
-  <div className={`md:mt-8 flex flex-col items-center gap-6 sm:flex-row sm:items-center ${className}`}>
+  <div
+    className={`flex flex-col items-center gap-6 sm:flex-row sm:items-center md:mt-8 ${className}`}
+  >
     <Link
       href="mailto:hello@ritikgupta.in"
-      className="group hidden md:flex w-full items-center justify-center gap-2 rounded-2xl bg-zinc-900 px-8 md:py-4  text-[15px] font-bold text-white shadow-2xl transition-all active:scale-95 sm:w-auto dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
+      className="group hidden w-full items-center justify-center gap-2 rounded-2xl bg-zinc-900 px-8 text-[15px] font-bold text-white shadow-2xl transition-all active:scale-95 sm:w-auto md:flex md:py-4 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
     >
       Get in Touch
-      <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+      <ArrowRight
+        size={18}
+        className="transition-transform group-hover:translate-x-1"
+      />
     </Link>
 
     <div className="flex items-center gap-6 px-2">
@@ -48,7 +53,7 @@ const Hero = () => {
         <div className="flex w-full max-w-2xl flex-1 flex-col items-start text-left">
           <h1 className="mb-6 max-w-3xl text-3xl font-bold leading-tight text-zinc-900 md:mb-8 md:text-5xl dark:text-white">
             Hello, I&apos;m a{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-cyan-400">
               software engineer.
             </span>
           </h1>

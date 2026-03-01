@@ -24,10 +24,19 @@ export const metadata = {
     "Next.js Developer",
     "React.js Developer",
     "Node.js Developer",
+    "TypeScript",
     "Web Development",
+    "Portfolio",
+    "India",
   ],
   authors: [{ name: "Ritik Gupta", url: "https://ritikgupta.in" }],
   creator: "Ritik Gupta",
+  publisher: "Ritik Gupta",
+
+  alternates: {
+    canonical: "https://ritikgupta.in",
+  },
+
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -38,30 +47,49 @@ export const metadata = {
     siteName: "Ritik Gupta Portfolio",
     images: [
       {
-        url: "/images/avatar.jpg",
+        url: "https://ritikgupta.in/images/avatar.jpg",
         width: 1200,
         height: 630,
         alt: "Ritik Gupta - Full Stack Software Engineer",
+        type: "image/jpeg",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
+    site: "@ritikgupta856",
+    creator: "@ritikgupta856",
     title: "Ritik Gupta | Full Stack Software Engineer",
     description:
       "I build fast, scalable, and production-ready web applications from the ground up — handling everything from frontend design to backend architecture and deployment.",
-    creator: "@ritikgupta856",
-    images: ["/images/avatar.jpg"],
+    images: ["https://ritikgupta.in/images/avatar.jpg"], 
   },
+
   robots: {
     index: true,
     follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
+
   icons: {
-    icon: "/images/avatar.jpg",
-    shortcut: "/images/avatar.jpg",
-    apple: "/images/avatar.jpg",
+    icon: [
+      { url: "/images/avatar.jpg", type: "image/jpeg" },
+    ],
+    apple: [{ url: "/images/avatar.jpg", sizes: "180x180" }],
   },
+
+
+  applicationName: "Ritik Gupta Portfolio",
+  referrer: "origin-when-cross-origin",
+  category: "technology",
 };
 
 export default function RootLayout({ children }) {
