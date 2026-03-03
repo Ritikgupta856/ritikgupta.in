@@ -26,15 +26,17 @@ export default function ProjectCard({
     }
     return matched ? matched.icon : null;
   };
-  return (
-    <div className="group flex w-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
+
+  const CardContent = (
+    <>
       {image && (
-        <div className="relative h-48 w-full overflow-hidden border-b border-border/50 sm:h-56">
+        <div className="relative aspect-video w-full overflow-hidden border-b border-border/50 bg-secondary/30">
           <Image
             src={image}
             alt={title}
             fill
-            className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+            className="object-contain transition-transform duration-500 ease-in-out group-hover:scale-[1.02]"
+            priority
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         </div>
@@ -42,7 +44,7 @@ export default function ProjectCard({
 
       <div className="flex flex-1 flex-col p-5 pt-6 sm:p-6 sm:pt-7 md:p-8">
         <div className="mb-4 flex items-start justify-between gap-4">
-          <h3 className="text-base md:text-lg font-bold leading-snug tracking-tight text-foreground sm:text-xl">
+          <h3 className="text-base font-bold leading-snug tracking-tight text-foreground sm:text-xl md:text-lg">
             {title}
           </h3>
           <div className="-mt-1 flex flex-shrink-0 items-center gap-1.5">
@@ -51,6 +53,7 @@ export default function ProjectCard({
                 href={githubLink}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
                 className="rounded-lg bg-muted p-1.5 text-muted-foreground transition-colors hover:bg-muted-foreground/20 hover:text-foreground sm:p-2"
                 title="Source Code"
               >
@@ -58,50 +61,62 @@ export default function ProjectCard({
               </Link>
             )}
             {href && (
-              <Link
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-lg bg-primary/10 p-1.5 text-primary transition-colors hover:bg-primary/20 sm:p-2"
+              <div
+                className="rounded-lg bg-primary/10 p-1.5 text-primary transition-colors group-hover:bg-primary/20 sm:p-2"
                 title="Live Demo"
               >
                 <ArrowUpRight size={16} />
-              </Link>
+              </div>
             )}
           </div>
         </div>
 
         {description && (
-          <p className="mb-2 line-clamp-3 text-[13px] leading-relaxed text-muted-foreground sm:text-[14px]">
+          <p className="mb-4 text-[13px] leading-normal text-muted-foreground tracking-tight sm:text-[14px]">
             {description}
           </p>
         )}
       </div>
 
       {tags && tags.length > 0 && (
-        <div className="border-t border-border bg-muted/10 px-5 py-4 sm:px-6 sm:py-5 md:px-8">
-          <div className="flex flex-wrap gap-2 sm:gap-2.5">
+        <div className="border-t border-border bg-muted/5 px-5 py-4 sm:px-6 sm:py-5 md:px-8">
+          <div className="flex flex-wrap gap-2 sm:gap-3">
             {tags.map((tag, idx) => {
               const icon = getTechIcon(tag);
               return (
                 <div
                   key={idx}
-                  className="flex items-center gap-1.5 rounded-lg border border-border bg-white px-2.5 py-1 shadow-sm sm:px-3 dark:bg-zinc-900"
+                  className="flex size-7 items-center justify-center rounded-lg border border-border bg-white p-1.5 shadow-sm transition-transform hover:scale-110 sm:size-9"
+                  title={tag}
                 >
                   {icon && (
                     <img
                       src={icon}
                       alt={tag}
-                      className="size-4 sm:size-6"
+                      className="size-full object-contain transition-all"
                     />
                   )}
-
                 </div>
               );
             })}
           </div>
         </div>
       )}
+    </>
+  );
+
+  const handleCardClick = (e) => {
+    // Don't navigate if clicking the github link itself
+    if (e.target.closest("a")) return;
+    if (href) window.open(href, "_blank", "noopener,noreferrer");
+  };
+
+  return (
+    <div
+      onClick={handleCardClick}
+      className={`group flex w-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 ${href ? "cursor-pointer" : ""}`}
+    >
+      {CardContent}
     </div>
   );
 }

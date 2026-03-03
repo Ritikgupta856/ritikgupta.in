@@ -1,48 +1,25 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, ArrowRight } from "lucide-react";
-import { IconBrandX } from "@tabler/icons-react";
-
-const socialLinks = [
-  { href: "https://x.com/ritikgupta856", icon: IconBrandX, label: "X" },
-  {
-    href: "https://linkedin.com/in/ritikgupta856",
-    icon: Linkedin,
-    label: "LinkedIn",
-  },
-  { href: "https://github.com/Ritikgupta856", icon: Github, label: "GitHub" },
-];
+import { ArrowRight } from "lucide-react";
 
 const HeroActions = ({ className = "" }) => (
   <div
     className={`flex flex-col items-center gap-6 sm:flex-row sm:items-center md:mt-8 ${className}`}
   >
+
     <Link
-      href="mailto:hello@ritikgupta.in"
-      className="group hidden w-full items-center justify-center gap-2 rounded-2xl bg-zinc-900 px-8 text-[15px] font-bold text-white shadow-2xl transition-all active:scale-95 sm:w-auto md:flex md:py-4 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
+      href="https://linkedin.com/in/ritikgupta856"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group hidden w-full items-center justify-center gap-2 rounded-2xl bg-zinc-900 px-8 text-[15px] font-bold text-white shadow-2xl transition-all active:scale-95 sm:w-auto md:flex md:py-3 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
     >
-      Get in Touch
+      Let's Connect
       <ArrowRight
         size={18}
         className="transition-transform group-hover:translate-x-1"
       />
     </Link>
-
-    <div className="flex items-center gap-6 px-2">
-      {socialLinks.map(({ href, icon: Icon, label }) => (
-        <Link
-          key={label}
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={label}
-          className="text-zinc-500 transition-all duration-200 hover:-translate-y-1 hover:text-blue-500 dark:text-zinc-400 dark:hover:text-blue-400"
-        >
-          <Icon size={25} />
-        </Link>
-      ))}
-    </div>
   </div>
 );
 

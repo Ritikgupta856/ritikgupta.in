@@ -20,8 +20,8 @@ const Header = () => {
   useEffect(() => setMounted(true), []);
 
   return (
-    <header className="sticky top-4 z-50 flex w-full justify-center px-4 font-sans tracking-tight sm:top-6">
-      <div className="flex w-full items-center justify-between gap-2 rounded-full border border-zinc-200/50 bg-white/80 px-4 py-2 shadow-lg shadow-black/5 backdrop-blur-2xl sm:gap-6 sm:px-6 sm:py-2.5 md:w-auto md:max-w-fit dark:border-white/10 dark:bg-zinc-900/80 dark:shadow-black/20">
+    <header className="sticky top-4 z-50 flex w-full justify-center px-4 font-sans tracking-tight sm:top-6 sm:px-6 lg:px-8">
+      <div className="flex w-full items-center justify-between gap-2 rounded-full border border-zinc-200/50 bg-white/80 px-4 py-2 shadow-lg shadow-black/5 backdrop-blur-2xl sm:gap-6 sm:px-6 sm:py-2.5 md:w-auto md:max-w-fit md:bg-white/80 md:px-8 dark:border-white/10 dark:bg-zinc-900/80 dark:shadow-black/20">
         <Link
           href="/"
           className="group flex shrink-0 items-center gap-2 border-zinc-200 sm:border-r sm:pr-4 dark:border-white/10"
