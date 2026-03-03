@@ -27,7 +27,7 @@ export default function ProjectCard({
     return matched ? matched.icon : null;
   };
   return (
-    <div className="group flex w-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
+    <div className="group flex w-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
       {image && (
         <div className="relative h-48 w-full overflow-hidden border-b border-border/50 sm:h-56">
           <Image
@@ -92,12 +92,10 @@ export default function ProjectCard({
                     <img
                       src={icon}
                       alt={tag}
-                      className="size-3 object-contain sm:size-3.5"
+                      className="size-4 sm:size-6"
                     />
                   )}
-                  <span className="text-[10px] font-semibold text-foreground/80 sm:text-xs">
-                    {tag}
-                  </span>
+
                 </div>
               );
             })}

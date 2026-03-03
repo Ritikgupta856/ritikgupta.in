@@ -43,7 +43,7 @@ export const projects = [
     href: "https://wanderly.ritikgupta.in",
     tags: ["Next.js", "TypeScript", "Prisma", "MongoDB", "Tailwind"],
     githubLink: "https://github.com/Ritikgupta856/wanderly-marketplace",
-    image: "/images/avatar.jpg",
+    image: "/images/projects/wanderly.png",
     description:
       "A responsive online homestay marketplace built with Next.js 14, integrating secure NextAuth authentication and a MongoDB/Prisma database. It features modern UI design using Tailwind CSS and robust error handling via TypeScript, resulting in 30% faster query times.",
     highlights: [
@@ -57,9 +57,9 @@ export const projects = [
   {
     title: "ShopCart - E-Commerce Platform",
     href: "https://shopcart.ritikgupta.in",
-    tags: ["React.js", "Node.js", "MongoDB", "Zustand", "Tailwind", , "AWS"],
+    tags: ["React.js", "Node.js", "MongoDB", "Zustand", "Tailwind", "AWS"],
     githubLink: "https://github.com/Ritikgupta856/shopcart-store",
-    image: "/images/avatar.jpg",
+    image: "/images/projects/shopcart.png",
     description:
       "A full-stack eCommerce platform featuring a smooth React.js frontend, Zustand global state, and a highly available Node.js/MongoDB backend. Deployed on AWS EC2, the platform integrates Stripe for payments, boosting transaction success rates significantly.",
     highlights: [
@@ -75,7 +75,7 @@ export const projects = [
     href: "https://chatspark.ritikgupta.in",
     tags: ["React.js", "Firebase", "Shadcn UI", "Tailwind"],
     githubLink: "https://github.com/Ritikgupta856/chatspark-realtime-chat",
-    image: "/images/avatar.jpg",
+    image: "/images/projects/chatspark.png",
     description:
       "An interactive, real-time messaging application powered by React and Firebase. It offers secure authentication flows, customizable user profiles, and an optimized chat experience that brought a 30% increase in user engagement.",
     highlights: [
@@ -90,7 +90,7 @@ export const projects = [
     href: "https://scms.ritikgupta.in",
     tags: ["React.js", "Clerk", "Shadcn UI", "Tailwind"],
     githubLink: "https://github.com/Ritikgupta856/shopcart-admin-dashboard",
-    image: "/images/avatar.jpg",
+    image: "/images/projects/shopcart-admin.png",
     description:
       "A comprehensive CMS dashboard designed to streamline product, order, and content management. It ensures robust access control via Clerk authentication and utilizes Shadcn UI components for a consistent, accessible user experience.",
     highlights: [

@@ -25,11 +25,10 @@ const Projects = () => {
             <ProjectCard
               title={project.title}
               description={project.description}
-              techStack={project.tech}
               href={project.href}
               githubLink={project.githubLink}
               tags={project.tags}
-              highlights={project.highlights}
+              image={project.image}
             />
           </motion.div>
         ))}
