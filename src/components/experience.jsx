@@ -167,7 +167,7 @@ export default function Experience() {
                     key={i}
                     variants={techItem}
                     whileHover={{ y: -2, transition: { duration: 0.2 } }}
-                    className="flex cursor-default select-none items-center gap-1.5 rounded-lg border border-border/50 bg-muted/30 px-2.5 py-1.5 text-[12px] font-semibold text-foreground shadow-sm transition-all hover:bg-muted/50 sm:gap-2 sm:rounded-xl sm:px-3 sm:text-xs dark:border-border/10 dark:bg-muted/10 dark:hover:bg-muted/20"
+                    className="flex cursor-default cursor-pointer select-none items-center gap-1.5 rounded-lg border border-border/50 bg-muted/30 px-2.5 py-1.5 text-[12px] font-semibold text-foreground shadow-sm transition-all hover:bg-muted/50 sm:gap-2 sm:rounded-xl sm:px-3 sm:text-xs dark:border-border/10 dark:bg-muted dark:hover:bg-muted/70"
                   >
                     {icon ? (
                       <img

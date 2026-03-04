@@ -4,6 +4,12 @@ import { Github, ArrowUpRight } from "lucide-react";
 
 import Image from "next/image";
 import { stack } from "@/lib/data";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function ProjectCard({
   title,
@@ -84,19 +90,29 @@ export default function ProjectCard({
             {tags.map((tag, idx) => {
               const icon = getTechIcon(tag);
               return (
-                <div
-                  key={idx}
-                  className="flex size-7 items-center justify-center rounded-lg border border-border bg-white p-1.5 shadow-sm transition-transform hover:scale-110 sm:size-9"
-                  title={tag}
-                >
-                  {icon && (
-                    <img
-                      src={icon}
-                      alt={tag}
-                      className="size-full object-contain transition-all"
-                    />
-                  )}
-                </div>
+                <TooltipProvider key={idx} delayDuration={100}>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div className="relative flex size-7 cursor-pointer items-center justify-center rounded-lg border border-border bg-white p-1.5 shadow-sm transition-all hover:scale-110 hover:border-foreground/20 sm:size-9">
+                        {icon && (
+                          <img
+                            src={icon}
+                            alt={tag}
+                            className="size-full object-contain transition-all"
+                          />
+                        )}
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent
+                      side="top"
+                      className="bg-foreground text-background"
+                    >
+                      <p className="text-[10px] font-semibold sm:text-[11px]">
+                        {tag}
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               );
             })}
           </div>
