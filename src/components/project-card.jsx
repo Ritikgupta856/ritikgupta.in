@@ -35,7 +35,7 @@ export default function ProjectCard({
             src={image}
             alt={title}
             fill
-            className="object-contain transition-transform duration-500 ease-in-out group-hover:scale-[1.02]"
+            className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.02]"
             priority
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
