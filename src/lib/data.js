@@ -45,9 +45,9 @@ export const projects = [
     githubLink: "https://github.com/Ritikgupta856/wanderly-marketplace",
     image: "/images/projects/wanderly.png",
     description:
-      "A responsive online homestay marketplace built with Next.js 14, integrating secure NextAuth authentication and a MongoDB/Prisma database. It features modern UI design using Tailwind CSS and robust error handling via TypeScript, resulting in 30% faster query times.",
+      "A responsive online homestay marketplace built with Next.js 16, integrating secure NextAuth authentication and a MongoDB/Prisma database. It features modern UI design using Tailwind CSS and robust error handling via TypeScript, resulting in 30% faster query times.",
     highlights: [
-      "Developed a responsive online homestay marketplace using Next.js 14 with Tailwind CSS for modern UI design.",
+      "Developed a responsive online homestay marketplace using Next.js 16 with Tailwind CSS for modern UI design.",
       "Utilized TypeScript to improve code quality and enable early error detection.",
       "Implemented secure authentication using NextAuth for data integrity and privacy.",
       "Optimized performance with Prisma ORM and MongoDB, reducing query time by 30%.",
@@ -107,11 +107,11 @@ export const blogs = [
     title: "Understanding Debouncing in React",
     description:
       "Learn how debouncing works in React and how it helps reduce unnecessary API calls, improving performance and user experience.",
-    date: "2026-02-22",
+    date: "2026-03-11",
     coverImage: "/images/blogs/debouncing.png",
     tags: ["React", "Performance", "Frontend"],
     author: "Ritik Gupta",
-    readingTime: "5 min read",
+    readingTime: "6 min read",
     featured: true,
     published: true,
   },

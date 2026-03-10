@@ -27,7 +27,7 @@ export async function generateMetadata({ params }) {
       authors: ["Ritik Gupta"],
       images: [
         {
-          url: blog.coverImage || "/images/avatar.jpg",
+          url: `https://ritikgupta.in${blog.coverImage || "/images/avatar.jpg"}`,
           width: 1200,
           height: 630,
           alt: blog.title,
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title: blog.title,
       description: blog.description,
-      images: [blog.coverImage || "/images/avatar.jpg"],
+      images: [`https://ritikgupta.in${blog.coverImage || "/images/avatar.jpg"}`],
     },
   };
 }
@@ -125,18 +125,16 @@ export default async function BlogPage(props) {
         </header>
 
         <div className="prose">
-         <MDXRemote
-  source={blog.content}
-  components={mdxComponents}
-  options={{
-    mdxOptions: {
-      remarkPlugins: [remarkGfm],
-      rehypePlugins: [
-        rehypeSlug
-      ],
-    },
-  }}
-/>
+          <MDXRemote
+            source={blog.content}
+            components={mdxComponents}
+            options={{
+              mdxOptions: {
+                remarkPlugins: [remarkGfm],
+                rehypePlugins: [rehypeSlug],
+              },
+            }}
+          />
         </div>
 
         <div className="mt-12 border-t border-border pt-8">
