@@ -7,6 +7,9 @@ const nextConfig = {
         hostname: "www.flaticon.com",
       },
     ],
+    dangerouslyAllowSVG: true,
+    contentDispositionType: "attachment",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 };

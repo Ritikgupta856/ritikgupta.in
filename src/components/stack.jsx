@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { stack } from "@/lib/data";
 import Image from "next/image";
 import Heading from "./heading";
+import { cn } from "@/lib/utils";
 import {
   Tooltip,
   TooltipContent,
@@ -59,7 +60,10 @@ export default function Stack() {
                               src={Icon}
                               alt={skill.name}
                               fill
-                              className="object-contain"
+                              className={cn(
+                                "object-contain",
+                                skill.monochrome && "dark:invert",
+                              )}
                             />
                           </div>
                         ) : (
