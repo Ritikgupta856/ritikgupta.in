@@ -1,16 +1,20 @@
-"use client";
-import React from "react";
+import Link from "next/link";
 
-const Heading = ({ title, subtitle, className = "" }) => {
+const Heading = ({ title, action, className = "" }) => {
   return (
-    <div className={`mb-8 text-left sm:mb-10 ${className}`}>
-      <h2 className="flex items-center justify-start gap-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+    <div
+      className={`mb-5 flex items-baseline justify-between gap-4 ${className}`}
+    >
+      <h2 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
         {title}
       </h2>
-      {subtitle && (
-        <p className="mt-2 max-w-2xl text-xs text-muted-foreground sm:text-sm md:text-base">
-          {subtitle}
-        </p>
+      {action && (
+        <Link
+          href={action.href}
+          className="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+        >
+          {action.label} →
+        </Link>
       )}
     </div>
   );

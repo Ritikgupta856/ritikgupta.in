@@ -1,48 +1,47 @@
 const mdxComponents = {
   h1: ({ children, ...props }) => (
-    <h1 {...props} className={`scroll-mt-24 text-3xl font-bold mt-8 mb-4 ${props.className || ""}`.trim()}>
+    <h1
+      {...props}
+      className={`mb-4 mt-8 scroll-mt-8 text-3xl font-bold ${props.className || ""}`.trim()}
+    >
       {children}
     </h1>
   ),
   h2: ({ children, ...props }) => (
-    <h2 {...props} className={`scroll-mt-24 text-2xl font-semibold mt-8 mb-3 ${props.className || ""}`.trim()}>
+    <h2
+      {...props}
+      className={`mb-3 mt-8 scroll-mt-8 text-2xl font-semibold ${props.className || ""}`.trim()}
+    >
       {children}
     </h2>
   ),
   h3: ({ children, ...props }) => (
-    <h3 {...props} className={`scroll-mt-24 text-xl font-semibold mt-6 mb-2 ${props.className || ""}`.trim()}>
+    <h3
+      {...props}
+      className={`mb-2 mt-6 scroll-mt-8 text-xl font-semibold ${props.className || ""}`.trim()}
+    >
       {children}
     </h3>
   ),
   table: ({ children }) => (
-    <div className="overflow-x-auto my-6">
-      <table className="w-full border-collapse text-sm">
-        {children}
-      </table>
+    <div className="my-6 overflow-x-auto">
+      <table className="w-full border-collapse text-sm">{children}</table>
     </div>
   ),
-  thead: ({ children }) => (
-    <thead className="bg-gray-100 dark:bg-gray-800">
-      {children}
-    </thead>
-  ),
+  thead: ({ children }) => <thead className="bg-muted">{children}</thead>,
   tbody: ({ children }) => (
-    <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-      {children}
-    </tbody>
+    <tbody className="divide-y divide-border">{children}</tbody>
   ),
   tr: ({ children }) => (
-    <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-      {children}
-    </tr>
+    <tr className="transition-colors hover:bg-muted/50">{children}</tr>
   ),
   th: ({ children }) => (
-    <th className="px-4 py-3 text-left font-semibold text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700">
+    <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">
       {children}
     </th>
   ),
   td: ({ children }) => (
-    <td className="px-4 py-3 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700">
+    <td className="border border-border px-4 py-3 text-muted-foreground">
       {children}
     </td>
   ),

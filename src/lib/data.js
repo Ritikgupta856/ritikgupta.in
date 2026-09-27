@@ -1,13 +1,16 @@
 export const experience = {
-  company: "STARTWITH BASICX PVT. LTD.",
-  role: "Associate Software Engineer",
-  duration: "May 2024 - Present",
+  company: "StartWith BasicX",
+  role: "Software Engineer",
+  duration: "May 2024 – Present",
   location: "Jaipur, India",
   workDone: [
-    "Built a Meal Planning platform serving 1,000+ users, featuring multilingual support, secure authentication, and seamless payment integration.",
-    "Developed a comprehensive sports management platform streamlining tournaments, registrations, player and team management, scheduling, results, analytics, within a single unified dashboard.",
-    "Architected a jewelry e-commerce platform using Next.js (SSR), Razorpay integration, Strapi CMS, and Zustand, improving rendering efficiency and achieving 30% faster page loads.",
-    "Developed a document processing application using React, Python-based LLM integration, Node.js, and RabbitMQ for queue-based asynchronous processing, implementing split-view analysis and dynamic form conversion to reduce processing time by 70%.",
+    "Built a meal-planning application serving 1,000+ active users with React.js, TypeScript, and Node.js, including multi-language support (i18n), payment integration, and JWT-authenticated REST APIs.",
+    "Engineered a multi-organization admin dashboard (React.js, Node.js, MySQL) for member administration, tournaments, financial settlements, and subscriptions.",
+    "Architected a jewelry e-commerce platform on Next.js with server-side rendering, headless Strapi CMS, Razorpay payments, and Zustand state management, achieving 30% faster page loads.",
+    "Designed an on-demand image transformation service on AWS CloudFront, Lambda, and S3 that resizes, converts, and filters images through URL parameters, with edge caching to reduce origin load.",
+    "Migrated 10,000+ documents and images to AWS S3 through an event-driven Inngest pipeline with step-level retries and controlled concurrency, creating a media record for every asset.",
+    "Built a support-agent console for handling WhatsApp conversations and support tickets, connecting application APIs to n8n webhooks.",
+    "Automated deployments with GitHub Actions CI/CD pipelines that ship Docker containers to AWS EC2 behind Nginx reverse proxies.",
   ],
   techStack:
     "Next.js, React.js, TypeScript, Node.js, MySQL, Strapi CMS, Zustand, RabbitMQ, AWS, Tailwind CSS, Shadcn UI",
@@ -27,7 +30,11 @@ export const stack = [
   { name: "Tailwind", icon: "/icons/stack/tailwind.svg" },
   { name: "Firebase", icon: "/icons/stack/firebase.svg" },
   { name: "Prisma", icon: "/icons/stack/prisma.svg", monochrome: true },
-  { name: "Better Auth", icon: "/icons/stack/better-auth.svg", monochrome: true },
+  {
+    name: "Better Auth",
+    icon: "/icons/stack/better-auth.svg",
+    monochrome: true,
+  },
   { name: "Vercel AI SDK", icon: "/icons/stack/vercel.svg", monochrome: true },
   { name: "Git", icon: "/icons/stack/git.svg" },
   { name: "Zustand", icon: "/icons/stack/zustand.svg" },
@@ -39,9 +46,22 @@ export const stack = [
   { name: "Clerk", icon: "/icons/stack/clerk.svg" },
 ];
 
+export function getTechIcon(techName) {
+  const searchName = techName.toLowerCase().trim();
+  let matched = stack.find((s) => s.name.toLowerCase() === searchName);
+  if (!matched) {
+    matched = stack.find(
+      (s) =>
+        searchName.includes(s.name.toLowerCase()) ||
+        s.name.toLowerCase().includes(searchName),
+    );
+  }
+  return matched || null;
+}
+
 export const projects = [
   {
-    title: "Synapse - AI Workspace Platform",
+    title: "Synapse — AI Workspace Platform",
     href: "https://synapse.ritikgupta.in",
     tags: [
       "Next.js",
@@ -54,7 +74,7 @@ export const projects = [
     githubLink: "https://github.com/Ritikgupta856/ai-workspace",
     image: "/images/projects/synapse.png",
     description:
-      "An AI-powered multi-workspace platform for collaborative projects, tasks, notes, and documents, featuring a context-aware assistant with tool calling across workspace resources and a RAG-ready architecture.",
+      "Multi-workspace platform for projects, tasks, notes and docs, with an AI assistant that uses tool calling across workspace data. Includes RBAC, invitations and subscription billing.",
     highlights: [
       "Built an AI-powered multi-workspace platform for collaborative projects, tasks, notes, and documents.",
       "Developed a context-aware AI assistant with tool calling across workspace resources and a RAG-ready architecture.",
@@ -65,13 +85,13 @@ export const projects = [
     year: "2026",
   },
   {
-    title: "Wanderly - Homestay Marketplace",
+    title: "Wanderly — Homestay Marketplace",
     href: "https://wanderly.ritikgupta.in",
     tags: ["Next.js", "TypeScript", "Prisma", "MongoDB", "Tailwind"],
     githubLink: "https://github.com/Ritikgupta856/wanderly-marketplace",
     image: "/images/projects/wanderly.png",
     description:
-      "A responsive online homestay marketplace built with Next.js 16, integrating secure NextAuth authentication and a MongoDB/Prisma database. It features modern UI design using Tailwind CSS and robust error handling via TypeScript, resulting in 30% faster query times.",
+      "Homestay marketplace built with Next.js, with NextAuth authentication and a Prisma + MongoDB data layer.",
     highlights: [
       "Developed a responsive online homestay marketplace using Next.js 16 with Tailwind CSS for modern UI design.",
       "Utilized TypeScript to improve code quality and enable early error detection.",
@@ -81,13 +101,13 @@ export const projects = [
     year: "2023",
   },
   {
-    title: "ShopCart - E-Commerce Platform",
+    title: "ShopCart — E-Commerce Store",
     href: "https://shopcart.ritikgupta.in",
     tags: ["React.js", "Node.js", "MongoDB", "Zustand", "Tailwind", "AWS"],
     githubLink: "https://github.com/Ritikgupta856/shopcart-store",
     image: "/images/projects/shopcart.png",
     description:
-      "A full-stack eCommerce platform featuring a smooth React.js frontend, Zustand global state, and a highly available Node.js/MongoDB backend. Deployed on AWS EC2, the platform integrates Stripe for payments, boosting transaction success rates significantly.",
+      "Full-stack store with Stripe payments, a React + Zustand frontend and a Node.js/MongoDB backend deployed on AWS EC2 behind Nginx.",
     highlights: [
       "Built a responsive eCommerce platform using React.js and Tailwind CSS for intuitive UI.",
       "Developed a scalable backend with Node.js, Express.js, and MongoDB.",
@@ -97,13 +117,13 @@ export const projects = [
     ],
   },
   {
-    title: "ChatSpark - Real-Time Messaging",
+    title: "ChatSpark — Real-Time Messaging",
     href: "https://chatspark.ritikgupta.in",
     tags: ["React.js", "Firebase", "Shadcn UI", "Tailwind"],
     githubLink: "https://github.com/Ritikgupta856/chatspark-realtime-chat",
     image: "/images/projects/chatspark.png",
     description:
-      "An interactive, real-time messaging application powered by React and Firebase. It offers secure authentication flows, customizable user profiles, and an optimized chat experience that brought a 30% increase in user engagement.",
+      "Real-time chat app on React and Firebase, with sign-up, password reset and customizable user profiles.",
     highlights: [
       "Developed a real-time chat app with React and Firebase for instant communication.",
       "Integrated secure login, registration, and password reset functionalities.",
@@ -112,13 +132,13 @@ export const projects = [
     ],
   },
   {
-    title: "ShopCart - Admin Dashboard",
+    title: "ShopCart — Admin Dashboard",
     href: "https://scms.ritikgupta.in",
     tags: ["React.js", "Clerk", "Shadcn UI", "Tailwind"],
     githubLink: "https://github.com/Ritikgupta856/shopcart-admin-dashboard",
     image: "/images/projects/shopcart-admin.png",
     description:
-      "A comprehensive CMS dashboard designed to streamline product, order, and content management. It ensures robust access control via Clerk authentication and utilizes Shadcn UI components for a consistent, accessible user experience.",
+      "Admin dashboard for ShopCart's products, orders and content, with Clerk authentication and access control.",
     highlights: [
       "Built an admin CMS dashboard for product, order, and content management.",
       "Implemented secure authentication and access control with Clerk.",

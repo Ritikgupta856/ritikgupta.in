@@ -1,15 +1,10 @@
-"use client";
-import Link from "next/link";
-import { Github, ArrowUpRight } from "lucide-react";
-
 import Image from "next/image";
-import { stack } from "@/lib/data";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { ArrowUpRight, Github } from "lucide-react";
+import { getTechIcon } from "@/lib/data";
+import { cn } from "@/lib/utils";
+
+const buttonClass =
+  "relative z-10 inline-flex items-center gap-1.5 rounded-md border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground";
 
 export default function ProjectCard({
   title,
@@ -19,120 +14,97 @@ export default function ProjectCard({
   image,
   description,
 }) {
-  const getTechIcon = (techName) => {
-    const searchName = techName.toLowerCase().trim();
-    let matched = stack.find((s) => s.name.toLowerCase() === searchName);
-
-    if (!matched) {
-      matched = stack.find(
-        (s) =>
-          searchName.includes(s.name.toLowerCase()) ||
-          s.name.toLowerCase().includes(searchName),
-      );
-    }
-    return matched ? matched.icon : null;
-  };
-
-  const CardContent = (
-    <>
+  return (
+    <div className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-background transition-colors hover:border-foreground/20">
       {image && (
-        <div className="relative aspect-video w-full overflow-hidden border-b border-border/50 bg-secondary/30">
+        <div className="relative aspect-video w-full overflow-hidden border-b border-border bg-muted">
           <Image
             src={image}
-            alt={title}
+            alt={`${title} screenshot`}
             fill
-            className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.02]"
-            priority
+            sizes="(min-width: 768px) 460px, 100vw"
+            className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
           />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         </div>
       )}
 
-      <div className="flex flex-1 flex-col p-5 pt-6 sm:p-6 sm:pt-7 md:p-8">
-        <div className="mb-4 flex items-start justify-between gap-4">
-          <h3 className="text-base font-bold leading-snug tracking-tight text-foreground sm:text-xl md:text-lg">
-            {title}
-          </h3>
-          <div className="-mt-1 flex flex-shrink-0 items-center gap-1.5">
-            {githubLink && (
-              <Link
-                href={githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="rounded-lg bg-muted p-1.5 text-muted-foreground transition-colors hover:bg-muted-foreground/20 hover:text-foreground sm:p-2"
-                title="Source Code"
-              >
-                <Github size={16} />
-              </Link>
-            )}
-            {href && (
-              <div
-                className="rounded-lg bg-primary/10 p-1.5 text-primary transition-colors group-hover:bg-primary/20 sm:p-2"
-                title="Live Demo"
-              >
-                <ArrowUpRight size={16} />
-              </div>
-            )}
-          </div>
-        </div>
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <h3 className="font-medium leading-snug text-foreground">
+          {href ? (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="after:absolute after:inset-0 after:rounded-xl"
+            >
+              {title}
+            </a>
+          ) : (
+            title
+          )}
+        </h3>
 
         {description && (
-          <p className="mb-4 text-[13px] leading-normal text-muted-foreground tracking-tight sm:text-[14px]">
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             {description}
           </p>
         )}
-      </div>
 
-      {tags && tags.length > 0 && (
-        <div className="border-t border-border bg-muted/5 px-5 py-4 sm:px-6 sm:py-5 md:px-8">
-          <div className="flex flex-wrap gap-2 sm:gap-3">
-            {tags.map((tag, idx) => {
+        {tags?.length > 0 && (
+          <ul className="mt-4 flex flex-wrap gap-1.5">
+            {tags.map((tag) => {
               const icon = getTechIcon(tag);
               return (
-                <TooltipProvider key={idx} delayDuration={100}>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <div className="relative flex size-7 cursor-pointer items-center justify-center rounded-lg border border-border bg-white p-1.5 shadow-sm transition-all hover:scale-110 hover:border-foreground/20 sm:size-9">
-                        {icon && (
-                          <img
-                            src={icon}
-                            alt={tag}
-                            className="size-full object-contain transition-all"
-                          />
-                        )}
-                      </div>
-                    </TooltipTrigger>
-                    <TooltipContent
-                      side="top"
-                      className="bg-foreground text-background"
-                    >
-                      <p className="text-[10px] font-semibold sm:text-[11px]">
-                        {tag}
-                      </p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+                <li
+                  key={tag}
+                  className="flex items-center gap-1 rounded-md bg-muted px-2 py-0.5 font-mono text-[0.6875rem] text-muted-foreground"
+                >
+                  {icon && (
+                    <Image
+                      src={icon.icon}
+                      alt=""
+                      width={12}
+                      height={12}
+                      className={cn(
+                        "size-3 shrink-0 object-contain",
+                        icon.monochrome && "dark:invert",
+                      )}
+                    />
+                  )}
+                  {tag}
+                </li>
               );
             })}
+          </ul>
+        )}
+
+        {(href || githubLink) && (
+          <div className="mt-auto flex items-center gap-2 pt-5">
+            {href && (
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={buttonClass}
+              >
+                <ArrowUpRight className="size-3.5" />
+                Live
+              </a>
+            )}
+            {githubLink && (
+              <a
+                href={githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={buttonClass}
+              >
+                <Github className="size-3.5" />
+                GitHub
+              </a>
+            )}
           </div>
-        </div>
-      )}
-    </>
-  );
-
-  const handleCardClick = (e) => {
-    // Don't navigate if clicking the github link itself
-    if (e.target.closest("a")) return;
-    if (href) window.open(href, "_blank", "noopener,noreferrer");
-  };
-
-  return (
-    <div
-      onClick={handleCardClick}
-      className={`group flex w-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 ${href ? "cursor-pointer" : ""}`}
-    >
-      {CardContent}
+        )}
+      </div>
     </div>
   );
 }

@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getBlogBySlug } from "@/lib/mdx";
 import Link from "next/link";
-import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import Image from "next/image";
 import mdxComponents from "@/components/mdx-components";
 import remarkGfm from "remark-gfm";
@@ -38,7 +37,9 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title: blog.title,
       description: blog.description,
-      images: [`https://ritikgupta.in${blog.coverImage || "/images/avatar.jpg"}`],
+      images: [
+        `https://ritikgupta.in${blog.coverImage || "/images/avatar.jpg"}`,
+      ],
     },
   };
 }
@@ -51,104 +52,69 @@ export default async function BlogPage(props) {
     notFound();
   }
 
+  const meta = [
+    blog.date &&
+      new Date(blog.date).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
+    blog.readingTime,
+    ...blog.tags.map((tag) => `#${tag.toLowerCase()}`),
+  ].filter(Boolean);
+
   return (
-    <main className="min-h-screen bg-background font-sans text-foreground">
-      <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-16">
-        <Link
-          href="/#blogs"
-          className="group mb-8 inline-flex items-center gap-2 text-xs text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
-        >
-          <ArrowLeft
-            size={14}
-            className="transition-transform group-hover:-translate-x-0.5"
-          />
-          Back to blogs
-        </Link>
+    <main className="mx-auto w-full max-w-2xl px-6 py-12 sm:py-16">
+      <Link
+        href="/blogs"
+        className="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+      >
+        ← All posts
+      </Link>
 
-        <header className="mb-8 sm:mb-12">
-          <h1 className="mb-4 text-2xl font-extrabold leading-tight tracking-tight text-foreground sm:text-3xl md:text-4xl">
-            {blog.title}
-          </h1>
+      <header className="mb-10 mt-8">
+        <h1 className="text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-3xl">
+          {blog.title}
+        </h1>
 
-          <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground sm:gap-4 sm:text-sm">
-            {blog.date && (
-              <span className="flex items-center gap-1.5">
-                <Calendar size={13} />
-                {new Date(blog.date).toLocaleDateString(undefined, {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </span>
-            )}
-            {blog.readingTime && (
-              <span className="flex items-center gap-1.5">
-                <Clock size={13} />
-                {blog.readingTime}
-              </span>
-            )}
-            {blog.author && (
-              <span className="text-muted-foreground">
-                by{" "}
-                <span className="font-medium text-foreground">
-                  {blog.author}
-                </span>
-              </span>
-            )}
-          </div>
+        <p className="mt-3 font-mono text-xs text-muted-foreground">
+          {meta.join(" · ")}
+        </p>
 
-          {blog.tags && blog.tags.length > 0 && (
-            <div className="mt-4 flex flex-wrap gap-2">
-              {blog.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-border bg-muted px-2.5 py-1 text-[10px] font-medium text-muted-foreground sm:text-xs"
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {blog.coverImage && (
-            <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-muted shadow-sm sm:mt-12">
-              <Image
-                src={blog.coverImage}
-                alt={blog.title}
-                width={1200}
-                height={400}
-                priority
-                className="h-auto w-full object-cover transition-transform duration-500 hover:scale-[1.02]"
-              />
-            </div>
-          )}
-        </header>
-
-        <div className="prose">
-          <MDXRemote
-            source={blog.content}
-            components={mdxComponents}
-            options={{
-              mdxOptions: {
-                remarkPlugins: [remarkGfm],
-                rehypePlugins: [rehypeSlug],
-              },
-            }}
-          />
-        </div>
-
-        <div className="mt-12 border-t border-border pt-8">
-          <Link
-            href="/#blogs"
-            className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <ArrowLeft
-              size={14}
-              className="transition-transform group-hover:-translate-x-0.5"
+        {blog.coverImage && (
+          <div className="mt-8 overflow-hidden rounded-lg border border-border">
+            <Image
+              src={blog.coverImage}
+              alt={blog.title}
+              width={1200}
+              height={400}
+              priority
+              className="h-auto w-full object-cover"
             />
-            Back to all blogs
-          </Link>
-        </div>
+          </div>
+        )}
+      </header>
+
+      <div className="prose">
+        <MDXRemote
+          source={blog.content}
+          components={mdxComponents}
+          options={{
+            mdxOptions: {
+              remarkPlugins: [remarkGfm],
+              rehypePlugins: [rehypeSlug],
+            },
+          }}
+        />
+      </div>
+
+      <div className="mt-12 border-t border-border pt-6">
+        <Link
+          href="/blogs"
+          className="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+        >
+          ← All posts
+        </Link>
       </div>
     </main>
   );

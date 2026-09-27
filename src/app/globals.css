@@ -5,15 +5,15 @@
 @layer base {
   :root {
     /* Zinc-based Light Theme */
-    --background: 240 4.8% 98%; /* zinc-50 */
+    --background: 0 0% 100%; /* white */
     --foreground: 240 5.9% 10%; /* zinc-950 */
-    --card: 0 0% 100%; /* white */
+    --card: 240 4.8% 98%; /* zinc-50 */
     --card-foreground: 240 5.9% 10%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 5.9% 10%;
 
-    --primary: 221.2 83.2% 53.3%; /* blue-600 */
-    --primary-foreground: 210 40% 98%; /* zinc-50 */
+    --primary: 240 5.9% 10%; /* zinc-950 */
+    --primary-foreground: 0 0% 98%; /* zinc-50 */
 
     --secondary: 240 4.8% 95.9%; /* zinc-100 */
     --secondary-foreground: 240 5.9% 10%; /* zinc-950 */
@@ -39,14 +39,14 @@
     --background: 240 10% 3.9%; /* zinc-950 / #09090b */
     --foreground: 0 0% 98%; /* zinc-50 */
 
-    --card: 240 5% 10%; /* between zinc-900 & 950 */
+    --card: 240 6% 6%; /* just above background */
     --card-foreground: 0 0% 98%; /* zinc-50 */
 
     --popover: 240 10% 4.9%; /* zinc-950 */
     --popover-foreground: 0 0% 98%; /* zinc-50 */
 
-    --primary: 217.2 91.2% 59.8%; /* blue-500 */
-    --primary-foreground: 210 40% 98%; /* zinc-50 */
+    --primary: 0 0% 98%; /* zinc-50 */
+    --primary-foreground: 240 5.9% 10%; /* zinc-950 */
 
     --secondary: 240 3.7% 15.9%; /* zinc-800 */
     --secondary-foreground: 0 0% 98%; /* zinc-50 */
@@ -78,6 +78,31 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Scale every rem-based size (text, spacing, column width) on large screens */
+  html {
+    font-size: 16px;
+  }
+  @media (min-width: 1280px) {
+    html {
+      font-size: 18px;
+    }
+  }
+  @media (min-width: 1536px) {
+    html {
+      font-size: 20px;
+    }
+  }
+  @media (min-width: 1920px) {
+    html {
+      font-size: 22px;
+    }
+  }
+  @media (min-width: 2560px) {
+    html {
+      font-size: 24px;
+    }
   }
 }
 
@@ -180,7 +205,7 @@
   border-radius: 0.3em;
   padding: 0.15em 0.4em;
   font-size: 0.875em;
-  font-family: ui-monospace, "Fira Code", monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
 }
 
 /* Code blocks */
@@ -200,7 +225,7 @@
   padding: 0;
   color: hsl(var(--foreground));
   font-size: inherit;
-  font-family: ui-monospace, "Fira Code", monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
 }
 
 /* Tables */

@@ -1,13 +1,15 @@
-import { Inter } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Toaster } from "react-hot-toast";
 import GAInit from "@/components/ga";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import Quote from "@/components/quote";
 import ScrollToTop from "@/components/scroll-to-top";
 
-const inter = Inter({ subsets: ["latin"] });
+const sans = Geist({ subsets: ["latin"], variable: "--font-sans" });
+const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata = {
   metadataBase: new URL("https://ritikgupta.in"),
@@ -63,7 +65,7 @@ export const metadata = {
     title: "Ritik Gupta | Full Stack Software Engineer",
     description:
       "I build fast, scalable, and production-ready web applications from the ground up — handling everything from frontend design to backend architecture and deployment.",
-    images: ["https://ritikgupta.in/images/avatar.jpg"], 
+    images: ["https://ritikgupta.in/images/avatar.jpg"],
   },
 
   robots: {
@@ -80,12 +82,9 @@ export const metadata = {
   },
 
   icons: {
-    icon: [
-      { url: "/images/avatar.jpg", type: "image/jpeg" },
-    ],
+    icon: [{ url: "/images/avatar.jpg", type: "image/jpeg" }],
     apple: [{ url: "/images/avatar.jpg", sizes: "180x180" }],
   },
-
 
   applicationName: "Ritik Gupta Portfolio",
   referrer: "origin-when-cross-origin",
@@ -94,10 +93,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body
-        className={`${inter.className} bg-zinc-50 text-zinc-950 antialiased dark:bg-[#09090b] dark:text-zinc-50`}
-      >
+    <html
+      lang="en"
+      className={`${sans.variable} ${mono.variable} scroll-smooth`}
+      suppressHydrationWarning
+    >
+      <body className="bg-background font-sans text-foreground antialiased">
         <GAInit />
         <Toaster />
         <ThemeProvider
@@ -109,6 +110,7 @@ export default function RootLayout({ children }) {
           <div className="relative flex min-h-screen flex-col">
             <Header />
             <div className="flex-1">{children}</div>
+            <Quote />
             <ScrollToTop />
             <Footer />
           </div>
