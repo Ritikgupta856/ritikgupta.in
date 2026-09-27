@@ -1,35 +1,45 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
 
 const links = [
-  { path: "/", name: "Home" },
+  { path: "/", name: "Home", isActive: (pathname) => pathname === "/" },
   { path: "/#experience", name: "Work" },
   { path: "/#projects", name: "Projects" },
-  { path: "/#blogs", name: "Blog" },
+  {
+    path: "/#blogs",
+    name: "Blog",
+    isActive: (pathname) => pathname.startsWith("/blogs"),
+  },
 ];
 
 const Header = () => {
+  const pathname = usePathname();
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
   return (
-    <header className="mx-auto w-full max-w-2xl px-6 pt-6 font-mono text-xs sm:pt-8 sm:text-[0.8125rem]">
+    <header className="mx-auto w-full max-w-2xl px-6 pt-6 font-mono text-[0.8125rem] ">
       <div className="flex items-center justify-between gap-4">
         <nav className="flex items-center gap-4 sm:gap-5">
-          {links.map((link) => (
-            <Link
-              key={link.path}
-              href={link.path}
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {link.name}
-            </Link>
-          ))}
+          {links.map((link) => {
+            const active = link.isActive?.(pathname);
+            return (
+              <Link
+                key={link.path}
+                href={link.path}
+                aria-current={active ? "page" : undefined}
+                className={`transition-colors hover:text-foreground ${active ? "text-foreground" : "text-muted-foreground"}`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
         </nav>
 
         <button

@@ -1,25 +1,16 @@
 const mdxComponents = {
   h1: ({ children, ...props }) => (
-    <h1
-      {...props}
-      className={`mb-4 mt-8 scroll-mt-8 text-3xl font-bold ${props.className || ""}`.trim()}
-    >
+    <h1 {...props} className={`scroll-mt-8 ${props.className || ""}`.trim()}>
       {children}
     </h1>
   ),
   h2: ({ children, ...props }) => (
-    <h2
-      {...props}
-      className={`mb-3 mt-8 scroll-mt-8 text-2xl font-semibold ${props.className || ""}`.trim()}
-    >
+    <h2 {...props} className={`scroll-mt-8 ${props.className || ""}`.trim()}>
       {children}
     </h2>
   ),
   h3: ({ children, ...props }) => (
-    <h3
-      {...props}
-      className={`mb-2 mt-6 scroll-mt-8 text-xl font-semibold ${props.className || ""}`.trim()}
-    >
+    <h3 {...props} className={`scroll-mt-8 ${props.className || ""}`.trim()}>
       {children}
     </h3>
   ),

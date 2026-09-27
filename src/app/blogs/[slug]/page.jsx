@@ -4,8 +4,10 @@ import { getBlogBySlug } from "@/lib/mdx";
 import Link from "next/link";
 import Image from "next/image";
 import mdxComponents from "@/components/mdx-components";
+import { Badge } from "@/components/ui/badge";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
+import rehypePrettyCode from "rehype-pretty-code";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -60,7 +62,6 @@ export default async function BlogPage(props) {
         day: "numeric",
       }),
     blog.readingTime,
-    ...blog.tags.map((tag) => `#${tag.toLowerCase()}`),
   ].filter(Boolean);
 
   return (
@@ -73,13 +74,26 @@ export default async function BlogPage(props) {
       </Link>
 
       <header className="mb-10 mt-8">
-        <h1 className="text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-3xl">
+        <h1 className="text-xl font-semibold leading-snug tracking-tight text-foreground sm:text-2xl">
           {blog.title}
         </h1>
 
         <p className="mt-3 font-mono text-xs text-muted-foreground">
           {meta.join(" · ")}
         </p>
+        {blog.tags?.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {blog.tags.map((tag) => (
+              <Badge
+                key={tag}
+                variant="secondary"
+                className="rounded-md px-2 font-normal text-foreground/70 hover:bg-secondary dark:text-muted-foreground"
+              >
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        )}
 
         {blog.coverImage && (
           <div className="mt-8 overflow-hidden rounded-lg border border-border">
@@ -102,7 +116,16 @@ export default async function BlogPage(props) {
           options={{
             mdxOptions: {
               remarkPlugins: [remarkGfm],
-              rehypePlugins: [rehypeSlug],
+              rehypePlugins: [
+                rehypeSlug,
+                [
+                  rehypePrettyCode,
+                  {
+                    theme: { light: "vitesse-light", dark: "vitesse-dark" },
+                    keepBackground: false,
+                  },
+                ],
+              ],
             },
           }}
         />

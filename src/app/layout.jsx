@@ -1,15 +1,14 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
-import { Toaster } from "react-hot-toast";
 import GAInit from "@/components/ga";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Quote from "@/components/quote";
 import ScrollToTop from "@/components/scroll-to-top";
 
-const sans = Geist({ subsets: ["latin"], variable: "--font-sans" });
-const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
+const sans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
+const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
 
 export const metadata = {
   metadataBase: new URL("https://ritikgupta.in"),
@@ -100,7 +99,6 @@ export default function RootLayout({ children }) {
     >
       <body className="bg-background font-sans text-foreground antialiased">
         <GAInit />
-        <Toaster />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

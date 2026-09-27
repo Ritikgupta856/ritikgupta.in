@@ -22,38 +22,69 @@ export const stack = [
   { name: "TypeScript", icon: "/icons/stack/ts.svg" },
   { name: "JavaScript", icon: "/icons/stack/js.svg" },
   { name: "React.js", icon: "/icons/stack/react.svg" },
-  { name: "Next.js", icon: "/icons/stack/next.svg", monochrome: true },
+  { name: "Next.js", icon: "/icons/stack/next.svg" },
   { name: "Node.js", icon: "/icons/stack/node.svg" },
   { name: "MongoDB", icon: "/icons/stack/mongodb.svg" },
   { name: "PostgreSQL", icon: "/icons/stack/postgres.svg" },
   { name: "Docker", icon: "/icons/stack/docker.svg" },
   { name: "Tailwind", icon: "/icons/stack/tailwind.svg" },
   { name: "Firebase", icon: "/icons/stack/firebase.svg" },
-  { name: "Prisma", icon: "/icons/stack/prisma.svg", monochrome: true },
-  {
-    name: "Better Auth",
-    icon: "/icons/stack/better-auth.svg",
-    monochrome: true,
-  },
-  { name: "Vercel AI SDK", icon: "/icons/stack/vercel.svg", monochrome: true },
+  { name: "Prisma", icon: "/icons/stack/prisma.svg" },
+  { name: "Better Auth", icon: "/icons/stack/better-auth.svg" },
+  { name: "Vercel AI SDK", icon: "/icons/stack/vercel.svg" },
   { name: "Git", icon: "/icons/stack/git.svg" },
   { name: "Zustand", icon: "/icons/stack/zustand.svg" },
   { name: "MySQL", icon: "/icons/stack/mysql.svg" },
   { name: "RabbitMQ", icon: "/icons/stack/rabbitmq.svg" },
-  { name: "Shadcn UI", icon: "/icons/stack/shadcn.svg", monochrome: true },
-  { name: "AWS", icon: "/icons/stack/aws.svg", monochrome: true },
+  { name: "Shadcn UI", icon: "/icons/stack/shadcn.svg" },
+  { name: "AWS", icon: "/icons/stack/aws.svg" },
   { name: "Strapi", icon: "/icons/stack/strapi.svg" },
-  { name: "Clerk", icon: "/icons/stack/clerk.svg" },
+  { name: "Express.js", icon: "/icons/stack/express.svg" },
+  { name: "Nginx", icon: "/icons/stack/nginx.svg" },
+  { name: "GitHub", icon: "/icons/stack/github.svg" },
+  { name: "CI/CD", icon: "/icons/stack/github-actions.svg" },
 ];
 
+export const stackCategories = [
+  {
+    label: "Languages",
+    tools: ["JavaScript", "TypeScript"],
+  },
+  {
+    label: "Frontend",
+    tools: ["React.js", "Next.js", "Zustand", "Tailwind CSS", "shadcn/ui"],
+  },
+  {
+    label: "Backend",
+    tools: [
+      "Node.js",
+      "Express.js",
+      "Prisma ORM",
+      "Better Auth",
+      "RabbitMQ",
+      "Vercel AI SDK",
+    ],
+  },
+  {
+    label: "Databases",
+    tools: ["PostgreSQL", "MySQL", "MongoDB", "Firebase"],
+  },
+  {
+    label: "Cloud & DevOps",
+    tools: ["AWS", "Docker", "Nginx", "Git", "GitHub", "CI/CD"],
+  },
+];
+
+const normalize = (name) => name.toLowerCase().replace(/[^a-z0-9]/g, "");
+
 export function getTechIcon(techName) {
-  const searchName = techName.toLowerCase().trim();
-  let matched = stack.find((s) => s.name.toLowerCase() === searchName);
+  const searchName = normalize(techName);
+  let matched = stack.find((s) => normalize(s.name) === searchName);
   if (!matched) {
     matched = stack.find(
       (s) =>
-        searchName.includes(s.name.toLowerCase()) ||
-        s.name.toLowerCase().includes(searchName),
+        searchName.includes(normalize(s.name)) ||
+        normalize(s.name).includes(searchName),
     );
   }
   return matched || null;
@@ -61,7 +92,8 @@ export function getTechIcon(techName) {
 
 export const projects = [
   {
-    title: "Synapse — AI Workspace Platform",
+    title: "Synapse",
+    category: "AI Workspace Platform",
     href: "https://synapse.ritikgupta.in",
     tags: [
       "Next.js",
@@ -72,9 +104,9 @@ export const projects = [
       "Vercel AI SDK",
     ],
     githubLink: "https://github.com/Ritikgupta856/ai-workspace",
-    image: "/images/projects/synapse.png",
+    image: "/images/projects/synapse.webp",
     description:
-      "Multi-workspace platform for projects, tasks, notes and docs, with an AI assistant that uses tool calling across workspace data. Includes RBAC, invitations and subscription billing.",
+      "AI workspace platform with tool-calling and RAG-ready search.",
     highlights: [
       "Built an AI-powered multi-workspace platform for collaborative projects, tasks, notes, and documents.",
       "Developed a context-aware AI assistant with tool calling across workspace resources and a RAG-ready architecture.",
@@ -85,13 +117,13 @@ export const projects = [
     year: "2026",
   },
   {
-    title: "Wanderly — Homestay Marketplace",
+    title: "Wanderly",
+    category: "Homestay Marketplace",
     href: "https://wanderly.ritikgupta.in",
     tags: ["Next.js", "TypeScript", "Prisma", "MongoDB", "Tailwind"],
     githubLink: "https://github.com/Ritikgupta856/wanderly-marketplace",
-    image: "/images/projects/wanderly.png",
-    description:
-      "Homestay marketplace built with Next.js, with NextAuth authentication and a Prisma + MongoDB data layer.",
+    image: "/images/projects/wanderly.webp",
+    description: "Homestay marketplace built with Next.js, Prisma and MongoDB.",
     highlights: [
       "Developed a responsive online homestay marketplace using Next.js 16 with Tailwind CSS for modern UI design.",
       "Utilized TypeScript to improve code quality and enable early error detection.",
@@ -101,13 +133,13 @@ export const projects = [
     year: "2023",
   },
   {
-    title: "ShopCart — E-Commerce Store",
+    title: "ShopCart",
+    category: "E-Commerce Store",
     href: "https://shopcart.ritikgupta.in",
     tags: ["React.js", "Node.js", "MongoDB", "Zustand", "Tailwind", "AWS"],
     githubLink: "https://github.com/Ritikgupta856/shopcart-store",
-    image: "/images/projects/shopcart.png",
-    description:
-      "Full-stack store with Stripe payments, a React + Zustand frontend and a Node.js/MongoDB backend deployed on AWS EC2 behind Nginx.",
+    image: "/images/projects/shopcart.webp",
+    description: "Full-stack e-commerce store with Stripe payments on AWS EC2.",
     highlights: [
       "Built a responsive eCommerce platform using React.js and Tailwind CSS for intuitive UI.",
       "Developed a scalable backend with Node.js, Express.js, and MongoDB.",
@@ -117,13 +149,13 @@ export const projects = [
     ],
   },
   {
-    title: "ChatSpark — Real-Time Messaging",
+    title: "ChatSpark",
+    category: "Real-Time Messaging",
     href: "https://chatspark.ritikgupta.in",
     tags: ["React.js", "Firebase", "Shadcn UI", "Tailwind"],
     githubLink: "https://github.com/Ritikgupta856/chatspark-realtime-chat",
-    image: "/images/projects/chatspark.png",
-    description:
-      "Real-time chat app on React and Firebase, with sign-up, password reset and customizable user profiles.",
+    image: "/images/projects/chatspark.webp",
+    description: "Real-time chat app built with React and Firebase.",
     highlights: [
       "Developed a real-time chat app with React and Firebase for instant communication.",
       "Integrated secure login, registration, and password reset functionalities.",
@@ -132,16 +164,16 @@ export const projects = [
     ],
   },
   {
-    title: "ShopCart — Admin Dashboard",
+    title: "ShopCart Admin",
+    category: "E-Commerce CMS",
     href: "https://scms.ritikgupta.in",
-    tags: ["React.js", "Clerk", "Shadcn UI", "Tailwind"],
+    tags: ["React.js", "Shadcn UI", "Tailwind"],
     githubLink: "https://github.com/Ritikgupta856/shopcart-admin-dashboard",
-    image: "/images/projects/shopcart-admin.png",
-    description:
-      "Admin dashboard for ShopCart's products, orders and content, with Clerk authentication and access control.",
+    image: "/images/projects/shopcart-admin.webp",
+    description: "Admin dashboard for managing ShopCart products, orders and customers.",
     highlights: [
       "Built an admin CMS dashboard for product, order, and content management.",
-      "Implemented secure authentication and access control with Clerk.",
+      "Implemented secure authentication and access control.",
       "Streamlined operations with reusable components using Shadcn UI and Tailwind.",
     ],
   },
