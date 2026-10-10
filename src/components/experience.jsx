@@ -15,7 +15,7 @@ export default function Experience() {
   const techs = experience.techStack.split(", ");
 
   return (
-    <section id="experience" className="w-full scroll-mt-8">
+    <section id="experience" className="animate-slide-in w-full scroll-mt-8 delay-300">
       <Heading title="Experience" />
 
       <div className="flex items-start gap-3.5">
@@ -33,7 +33,7 @@ export default function Experience() {
           >
             {experience.company}
           </a>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs text-muted-foreground">
             {experience.role} · {experience.location}
           </p>
           <p className="mt-1 font-mono text-xs text-muted-foreground sm:col-start-2 sm:row-start-1 sm:mt-0 sm:self-center">

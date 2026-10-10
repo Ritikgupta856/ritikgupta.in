@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import ThemeScript from "@/components/ui/theme-script";
 import GAInit from "@/components/ga";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
@@ -48,7 +49,7 @@ export const metadata = {
     siteName: "Ritik Gupta Portfolio",
     images: [
       {
-        url: "https://ritikgupta.in/images/avatar.jpg",
+        url: "https://ritikgupta.in/images/avatar.png",
         width: 1200,
         height: 630,
         alt: "Ritik Gupta - Full Stack Software Engineer",
@@ -64,7 +65,7 @@ export const metadata = {
     title: "Ritik Gupta | Full Stack Software Engineer",
     description:
       "I build fast, scalable, and production-ready web applications from the ground up — handling everything from frontend design to backend architecture and deployment.",
-    images: ["https://ritikgupta.in/images/avatar.jpg"],
+    images: ["https://ritikgupta.in/images/avatar.png"],
   },
 
   robots: {
@@ -81,8 +82,8 @@ export const metadata = {
   },
 
   icons: {
-    icon: [{ url: "/images/avatar.jpg", type: "image/jpeg" }],
-    apple: [{ url: "/images/avatar.jpg", sizes: "180x180" }],
+    icon: [{ url: "/images/avatar.png", type: "image/jpeg" }],
+    apple: [{ url: "/images/avatar.png", sizes: "180x180" }],
   },
 
   applicationName: "Ritik Gupta Portfolio",
@@ -98,13 +99,9 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
     >
       <body className="bg-background font-sans text-foreground antialiased">
+        <ThemeScript />
         <GAInit />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider>
           <div className="relative flex min-h-screen flex-col">
             <Header />
             <div className="flex-1">{children}</div>

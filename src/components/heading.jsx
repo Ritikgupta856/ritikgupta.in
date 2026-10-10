@@ -5,7 +5,7 @@ const Heading = ({ title, action, className = "" }) => {
     <div
       className={`mb-5 flex items-baseline justify-between gap-4 ${className}`}
     >
-      <h2 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+      <h2 className="text-xl font-bold tracking-tight text-foreground">
         {title}
       </h2>
       {action && (

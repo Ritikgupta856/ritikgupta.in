@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/components/ui/theme-provider";
 import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
 
@@ -24,9 +24,9 @@ const Header = () => {
   useEffect(() => setMounted(true), []);
 
   return (
-    <header className="mx-auto w-full max-w-2xl px-6 pt-6 font-mono text-[0.8125rem] ">
+    <header className="animate-slide-in mx-auto w-full max-w-2xl px-3 pt-6">
       <div className="flex items-center justify-between gap-4">
-        <nav className="flex items-center gap-4 sm:gap-5">
+        <nav className="flex items-center gap-6 text-sm font-medium">
           {links.map((link) => {
             const active = link.isActive?.(pathname);
             return (

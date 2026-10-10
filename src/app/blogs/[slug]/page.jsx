@@ -28,7 +28,7 @@ export async function generateMetadata({ params }) {
       authors: ["Ritik Gupta"],
       images: [
         {
-          url: `https://ritikgupta.in${blog.coverImage || "/images/avatar.jpg"}`,
+          url: `https://ritikgupta.in${blog.coverImage || "/images/avatar.png"}`,
           width: 1200,
           height: 630,
           alt: blog.title,
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }) {
       title: blog.title,
       description: blog.description,
       images: [
-        `https://ritikgupta.in${blog.coverImage || "/images/avatar.jpg"}`,
+        `https://ritikgupta.in${blog.coverImage || "/images/avatar.png"}`,
       ],
     },
   };
@@ -65,7 +65,7 @@ export default async function BlogPage(props) {
   ].filter(Boolean);
 
   return (
-    <main className="mx-auto w-full max-w-2xl px-6 py-12 sm:py-16">
+    <main className="animate-slide-in mx-auto w-full max-w-2xl px-3 py-12 delay-200 sm:py-16">
       <Link
         href="/blogs"
         className="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"

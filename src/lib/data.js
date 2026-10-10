@@ -106,7 +106,7 @@ export const projects = [
     githubLink: "https://github.com/Ritikgupta856/ai-workspace",
     image: "/images/projects/synapse.webp",
     description:
-      "AI workspace platform with tool-calling and RAG-ready search.",
+      "A shared workspace for projects, tasks, notes and documents, with an AI assistant that can search and act across all of them.",
     highlights: [
       "Built an AI-powered multi-workspace platform for collaborative projects, tasks, notes, and documents.",
       "Developed a context-aware AI assistant with tool calling across workspace resources and a RAG-ready architecture.",
@@ -123,7 +123,8 @@ export const projects = [
     tags: ["Next.js", "TypeScript", "Prisma", "MongoDB", "Tailwind"],
     githubLink: "https://github.com/Ritikgupta856/wanderly-marketplace",
     image: "/images/projects/wanderly.webp",
-    description: "Homestay marketplace built with Next.js, Prisma and MongoDB.",
+    description:
+      "A homestay marketplace where travellers browse, book and review stays, and hosts manage their own listings.",
     highlights: [
       "Developed a responsive online homestay marketplace using Next.js 16 with Tailwind CSS for modern UI design.",
       "Utilized TypeScript to improve code quality and enable early error detection.",
@@ -139,7 +140,8 @@ export const projects = [
     tags: ["React.js", "Node.js", "MongoDB", "Zustand", "Tailwind", "AWS"],
     githubLink: "https://github.com/Ritikgupta856/shopcart-store",
     image: "/images/projects/shopcart.webp",
-    description: "Full-stack e-commerce store with Stripe payments on AWS EC2.",
+    description:
+      "An online store with product browsing, a persistent cart and secure checkout.",
     highlights: [
       "Built a responsive eCommerce platform using React.js and Tailwind CSS for intuitive UI.",
       "Developed a scalable backend with Node.js, Express.js, and MongoDB.",
@@ -155,7 +157,8 @@ export const projects = [
     tags: ["React.js", "Firebase", "Shadcn UI", "Tailwind"],
     githubLink: "https://github.com/Ritikgupta856/chatspark-realtime-chat",
     image: "/images/projects/chatspark.webp",
-    description: "Real-time chat app built with React and Firebase.",
+    description:
+      "A chat app for one-to-one conversations that arrive instantly, with accounts and customizable profiles.",
     highlights: [
       "Developed a real-time chat app with React and Firebase for instant communication.",
       "Integrated secure login, registration, and password reset functionalities.",
@@ -170,7 +173,8 @@ export const projects = [
     tags: ["React.js", "Shadcn UI", "Tailwind"],
     githubLink: "https://github.com/Ritikgupta856/shopcart-admin-dashboard",
     image: "/images/projects/shopcart-admin.webp",
-    description: "Admin dashboard for managing ShopCart products, orders and customers.",
+    description:
+      "The dashboard behind ShopCart, where the team manages products, orders, customers and store content.",
     highlights: [
       "Built an admin CMS dashboard for product, order, and content management.",
       "Implemented secure authentication and access control.",

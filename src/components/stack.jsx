@@ -4,7 +4,7 @@ import Heading from "./heading";
 
 export default function Stack() {
   return (
-    <section id="stack" className="w-full scroll-mt-8">
+    <section id="stack" className="animate-slide-in w-full scroll-mt-8 delay-500">
       <Heading title="Stack" />
 
       <div>

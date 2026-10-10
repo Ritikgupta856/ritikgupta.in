@@ -4,29 +4,29 @@ import SocialLinks from "./social-links";
 
 const Hero = () => {
   return (
-    <section className="w-full">
-      <div className="relative size-20 overflow-hidden rounded-full ring-1 ring-border">
+    <section className="animate-slide-in w-full delay-200">
+      <div className="relative size-28 overflow-hidden rounded-full ring-1 ring-border">
         <Image
           alt="Ritik Gupta"
           fill
-          sizes="80px"
+          sizes="112px"
           className="object-cover"
-          src="/images/avatar.jpg"
+          src="/images/avatar.png"
           priority
         />
       </div>
 
-      <h1 className="mt-5 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+      <h1 className="mt-5 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
         Ritik Gupta
       </h1>
       <p className="mt-1.5 text-base text-muted-foreground">
         Software Engineer · Jaipur, India
       </p>
 
-      <p className="mt-5 text-sm leading-relaxed text-foreground/80">
-        A Full-Stack Software Engineer with 2+ years of experience, passionate
-        about exploring new technologies and turning ideas into reality through
-        polished, thoughtfully crafted projects.
+      <p className="mt-5 text-base leading-relaxed text-foreground/80">
+        I build full-stack products end to end, exploring new technologies
+        and turning ideas into reality through polished, thoughtfully crafted
+        projects.
       </p>
 
       <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
